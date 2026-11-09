@@ -5,7 +5,7 @@ import csv
 import time
 from datetime import datetime
 from pathlib import Path
-from safety import Safety
+from safety_windows import Safety
 from tello_io import TelloIO, FlightState
 
 HOVER_SECONDS = 5
@@ -29,7 +29,10 @@ def sample(io, writer, phase):
 
 
 def main():
-    log = Path('t06_' + datetime.now().strftime('%Y%m%d_%H%M%S') + '.csv')
+    log_dir = Path('logs')
+    log_dir.mkdir(exist_ok=True)
+    log = log_dir / ('t06_' + datetime.now().strftime('%Y%m%d_%H%M%S') + '.csv')
+    
     io = TelloIO(log_path=None)
     safety = Safety(io.t, max_height_cm=200, min_battery=20,
                     stall_stop_s=1, stall_land_s=3, max_mission_s=15)

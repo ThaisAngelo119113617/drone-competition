@@ -12,8 +12,7 @@ import tty
 
 
 class Safety:
-    def __init__(self, tello, max_height_cm=200, min_battery=20,
-                 stall_stop_s=1.0, stall_land_s=3.0, max_mission_s=30):
+    def __init__(self, tello, max_height_cm=200, min_battery=20, stall_stop_s=1.0, stall_land_s=3.0, max_mission_s=30):
         self.t = tello
         self.max_height = max_height_cm
         self.min_battery = min_battery
