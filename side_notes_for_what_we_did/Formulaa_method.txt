@@ -1,0 +1,62 @@
+=====================================================================================
+FORMULAS AND METHODS USED IN THIS FILE (overview)
+=====================================================================================
+1. Pinhole camera model (projection)
+       s * [u, v, 1]^T = K * [R | t] * [X, Y, Z, 1]^T ,  K = [[fx,0,cx],[0,fy,cy],[0,0,1]]
+   What it does: how a 3D point ends up as a pixel. K is in tello_calibration.npz.
+
+2. Brown-Conrady lens distortion model
+       x_d = x(1 + k1 r^2 + k2 r^4 + k3 r^6) + 2 p1 x y + p2 (r^2 + 2x^2)   (same for y)
+   What it does: corrects lens bending. D = [k1, k2, p1, p2, k3].
+
+3. Camera calibration (Zhang's method), done earlier: estimated K and D (RMS 0.31 px).
+
+4. ArUco detection: threshold -> squares -> read 4x4 bits -> ID in DICT_4X4_50.
+
+5. Perspective-n-Point (PnP), IPPE_SQUARE: from the 4 marker corners -> marker position
+   t = (x, y, z) in metres in the camera frame (x right, y down, z forward).
+
+6. Proportional (P) controller + 7. saturation (clamp) + 8. tolerance/debounce
+       u = K_P * (measured - wanted),  u_sat = max(-MAX_RC, min(MAX_RC, u))
+       "arrived" = inside tolerance for STABLE_FRAMES loops in a row
+
+9. Finite state machine:  APPROACH -> CLIMB -> WAYPOINTS -> HOLD -> land
+
+10. Fixed-rate control loop: period = 1 / LOOP_HZ
+
+11. Tello speed readings -> drone body speeds (found from the hand logs)
+       vgx, vgy are dm/s in the Tello's fixed frame, turned by yaw (yaw positive CLOCKWISE):
+         v_fwd   = 0.1 ( vgx cos(yaw) + vgy sin(yaw))
+         v_right = 0.1 (-vgx sin(yaw) + vgy cos(yaw)),   v_left = -v_right
+       heading rate for the EKF (counter-clockwise):  w = -d(yaw)/dt
+
+12. EKF prediction (Lab 3, Table 7.2 lines 2-7, holonomic version: the drone can fly sideways)
+       x' = x + (v_fwd cos th - v_left sin th) dt
+       y' = y + (v_fwd sin th + v_left cos th) dt
+       th' = th + w dt
+       G = d(x', y', th')/d(x, y, th),  Sigma' = G Sigma G^T + R,  R = diag(q_xy^2, q_xy^2, q_th^2) dt
+
+13. EKF correction with known correspondences (Lab 3, Table 7.2 lines 9-17)
+       measurement z = (r, phi):  r = sqrt(x_c^2 + z_c^2),  phi = atan2(-x_c, z_c)
+       q = (m_x - x)^2 + (m_y - y)^2,   z_hat = (sqrt q,  atan2(m_y - y, m_x - x) - th)
+       H = [[-(m_x-x)/sqrt q, -(m_y-y)/sqrt q, 0], [(m_y-y)/q, -(m_x-x)/q, -1]]
+       S = H Sigma H^T + Q,  K = Sigma H^T S^-1,  mu = mu + K (z - z_hat),  Sigma = (I - K H) Sigma
+   The ArUco ID tells which landmark it is (the "known correspondence"); MAP holds its position.
+
+14. Outlier rejection (idea from Lab 4): Mahalanobis gate
+       d^2 = (z - z_hat)^T S^-1 (z - z_hat) > 9.21 (chi-square, 2 dof, 99 %) -> ignore measurement
+
+15. Waypoint P controller in the drone's own frame (rotation by -theta)
+       e_fwd  =  cos th (X_w - x) + sin th (Y_w - y)
+       e_left = -sin th (X_w - x) + cos th (Y_w - y)
+       fb = K_WP e_fwd ,  lr = -K_WP e_left   (lr > 0 = fly right)
+
+16. Heading control ("look at" the next marker = active sensing)
+       th_target = atan2(m_y - y, m_x - x)        (direction to the marker, from the EKF)
+       yaw_rc = K_YAW * (th - th_target) in degrees   (turned too far left -> turn right)
+   What it does: keeps the next pole's marker in the camera image, so the EKF keeps
+   getting corrections instead of flying blind between two close poles.
+
+17. Height hold: ud = K_H (target_cm - tof_cm)
+=====================================================================================
+""
