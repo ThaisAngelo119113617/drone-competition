@@ -12,36 +12,57 @@ from ekf_replay import EKF, wrap, body_speeds, MAX_RANGE_M
 
 ID_LOW = 8
 ID_MID = 5
-ID_TOP = 17
 ID_BLUE = 6
 ID_GREEN = 7
-ALL_IDS = {ID_LOW, ID_MID, ID_TOP, ID_BLUE, ID_GREEN}
+ID_PLANT = 13
+ALL_IDS = {ID_LOW, ID_MID, ID_BLUE, ID_GREEN, ID_PLANT} #ID_TOP
 MARKER_SIZE_M = 0.115  # black square only
+NAMES = {ID_LOW: 'purple bottom', ID_MID: 'purple top', ID_BLUE: 'blue', ID_GREEN: 'green',
+         ID_PLANT: 'plant'}
 
-# Local frame: origin = start point, X forward, Y left(+) / right(-)
+# Local frame: start point = ID_LOW, X forward, Y left(+) / right(-)
 MAP = {
     ID_LOW:   (0.75, 0.0),
     ID_MID:   (0.75, 0.0),
-    ID_TOP:   (0.75, 0.0),
-    ID_BLUE:  (2.35, 0.0),
-    ID_GREEN: (2.86, 0.0),
+    ID_BLUE:  (1.60, 0.0),   
+    ID_GREEN: (2.11, 0.0),   
+    ID_PLANT: (3.90, -0.10), 
 }
 
 # (X, Y, height_cm or None, marker to look at)
+# height None = follow the height of the marker we look at
 WAYPOINTS = [
-    (0.45, -0.40, None, ID_TOP),
-    (1.15, -0.40, 60,   ID_BLUE),
-    (1.95,  0.40, 60,   ID_BLUE),
-    (2.70,  0.40, 60,   ID_GREEN),
-    (2.86,  0.40, 60,   ID_GREEN),
+    (0.45, -0.40, None, ID_MID),     # beside purple: RIGHT side (looking at purple)
+    (1.10, -0.40, None, ID_BLUE),    # 0.35 m past purple: RIGHT 
+    (1.25,  0.40, None, ID_BLUE),    # crossed over behind purple: LEFT side
+    (1.85,  0.40, None, ID_GREEN),   # 0.25 m past blue: LEFT side (between blue and green)
+    (1.85, -0.40, None, ID_PLANT),   # cross IN FRONT of green: RIGHT side
+    (2.45, -0.40, None, ID_PLANT),   # past green with the pole on the drone's LEFT, then the plant
 ]
 
+"""
+    short-form of words used 
+    rc = speed
+    lr = left (-) / right (+)
+    fb = forward (+) / backwards (-)
+    ud = up (+) / down (-)
+    yaw = turn -> clockwise(+) / counter clockwise(-)
+    vgx/vgy = velocity ground; speed in dm/s
+    tof= time of flight 
+    bat = battery 
+    s = state (from tello )
+    ex, ey, ez = error in x,y,z
+    st = stage (APPROACH, CLIMB, WAYPOINTS, PLANT, HOLD)
+    k = camera matrix
+"""
+
 APPROACH_DIST_M = 0.70
-TOL_M = 0.08
+TOL_M = 0.08        #tolerance in meters
 STABLE_FRAMES = 15
-K_P = 0.4
+K_P = 0.4           #proportional gain
 MAX_RC = 20
-MIN_RC = 8          # smallest rc value that actually moves the Tello
+MIN_RC = 8          # smallest rc value that actually moves the Tello (sideways / forward)
+MIN_UD_RC = 15      # smallest up/down value
 CLIMB_RC = 20
 MAX_CLIMB_CM = 180
 SIGMA0 = np.diag([0.05**2, 0.05**2, np.radians(5)**2])
@@ -50,16 +71,23 @@ WP_RC = 15
 WP_TOL_M = 0.10
 WP_STABLE = 5
 K_YAW = 1.0
+YAW_RC = 20         # max turn speed while flying waypoints
+TURN_FIRST_DEG = 15 # if the camera points more than this away from the marker: only turn, don't move
+MIN_WP_RC = 10      # smallest speed between waypoints (slower -> Tello reports speed 0)
 K_H = 0.5
 SIGMA_HOVER_M = 0.35
 SIGMA_LAND_M = 0.60
 SIGMA_WAIT_S = 4.0
 LOST_LAND_S = 2.0
-START_WAIT_S = 5.0
-CLIMB_TIMEOUT_S = 10.0
+START_WAIT_S = 10.0       # time to find ID_LOW after takeoff
+SEARCH_UP_RC = 15         # climb speed while looking for ID_LOW
+SEARCH_MAX_CM = 150       # never search higher than this (tof)
+CLIMB_TIMEOUT_S = 15.0    # (was 10: the last climb took 10.1 s)
 WP_TIMEOUT_S = 60.0
 MIN_HEIGHT_CM = 30
-HOLD_S = 3.0
+HOLD_S = 1.0              # pause in front of the plant before landing
+PLANT_DIST_M = 0.60       # stop this far in front of the plant marker, then land
+PLANT_TIMEOUT_S = 20.0    # must reach the plant within this
 
 LOOP_HZ = 20
 
@@ -94,12 +122,12 @@ def clamp(v, lim=MAX_RC):
     return int(max(-lim, min(lim, v)))
 
 
-def p_cmd(err_m, deadband_m=TOL_M / 2):
-    """P controller with a minimum command: K_P * error, but at least MIN_RC
+def p_cmd(err_m, deadband_m=TOL_M / 2, min_rc=MIN_RC):
+    """P controller with a minimum command: K_P * error, but at least min_rc
     when we are further away than deadband_m (otherwise the Tello doesn't move)."""
     u = K_P * err_m * 100
-    if abs(err_m) > deadband_m and abs(u) < MIN_RC:
-        u = MIN_RC if u > 0 else -MIN_RC
+    if abs(err_m) > deadband_m and abs(u) < min_rc:
+        u = min_rc if u > 0 else -min_rc
     return clamp(u)
 
 
@@ -107,7 +135,7 @@ def center_on(pose, target_dist=APPROACH_DIST_M, check_y=True):
     x, y, z = pose
     ex, ey, ez = x, y, z - target_dist
     lr = p_cmd(ex)          # marker to the right -> fly right
-    ud = p_cmd(-ey)         # marker below (y>0) -> go down
+    ud = p_cmd(-ey, min_rc=MIN_UD_RC)   # marker below (y>0) -> go down
     fb = p_cmd(ez)          # too far -> fly forward
     done = abs(ex) < TOL_M and abs(ez) < TOL_M and (not check_y or abs(ey) < TOL_M)
     return lr, fb, ud, done
@@ -125,6 +153,9 @@ class Mission:
         self.wp = 0
         self.unsure_since = None
         self.seen_once = False
+        self.last_low = None         # where ID_LOW was last seen (camera frame)
+        self.seen = {}               # option A: {id: (time, distance)} first time each marker was seen
+        self.t0 = time.monotonic()
         self.goto('APPROACH', time.monotonic())
 
     def goto(self, stage, t):
@@ -144,6 +175,24 @@ class Mission:
         # count up when inside tolerance; one noisy frame only costs 2, not everything
         self.stable = self.stable + 1 if ok else max(0, self.stable - 2)
         return self.stable >= need
+
+    def register(self, poses, t):
+        """Option A: announce each pole marker the first time the camera sees it."""
+        for mid, (cx, cy, cz) in poses.items():
+            if mid not in self.seen:
+                dist = float(np.hypot(cx, cz))
+                self.seen[mid] = (t - self.t0, dist)
+                print(f'[SEEN] ID {mid} ({NAMES.get(mid, "?")}) at {dist:.2f} m, '
+                      f't={t - self.t0:.1f} s, stage={self.stage}', flush=True)
+
+    def summary(self):
+        print('[RESUMO] marcadores registrados:', flush=True)
+        for mid in (ID_LOW, ID_MID, ID_BLUE, ID_GREEN, ID_PLANT):
+            if mid in self.seen:
+                ts, d = self.seen[mid]
+                print(f'   ID {mid:2d} {NAMES[mid]:14s} OK   (first seen t={ts:.1f} s at {d:.2f} m)', flush=True)
+            else:
+                print(f'   ID {mid:2d} {NAMES[mid]:14s} NOT SEEN', flush=True)
 
     def run_ekf(self, poses, s, t):
         vgx, vgy, yaw = s.get('vgx'), s.get('vgy'), s.get('yaw')
@@ -170,16 +219,24 @@ class Mission:
         ex, ey = X_w - x, Y_w - y
         e_fwd = np.cos(th) * ex + np.sin(th) * ey
         e_left = -np.sin(th) * ex + np.cos(th) * ey
-        fb = clamp(K_WP * e_fwd * 100, WP_RC)
-        lr = clamp(-K_WP * e_left * 100, WP_RC)
+        fb = K_WP * e_fwd * 100
+        lr = -K_WP * e_left * 100
+        speed = float(np.hypot(fb, lr))
+        if speed > 0 and np.hypot(ex, ey) > WP_TOL_M / 2 and speed < MIN_WP_RC:
+            fb, lr = fb * MIN_WP_RC / speed, lr * MIN_WP_RC / speed   # same direction, min speed
+        fb, lr = clamp(fb, WP_RC), clamp(lr, WP_RC)
         th_target = 0.0
         if look_id is not None:
             mx, my = MAP[look_id]
             th_target = float(np.arctan2(my - y, mx - x))
-        yaw_rc = clamp(K_YAW * np.degrees(wrap(th - th_target)))
+        head_err = np.degrees(wrap(th - th_target))
+        yaw_rc = clamp(K_YAW * head_err, YAW_RC)
+        if abs(head_err) > TURN_FIRST_DEG:
+            lr = fb = 0          # turn first, so the marker stays in the image; then move
         return lr, fb, yaw_rc, float(np.hypot(ex, ey))
 
     def update(self, poses, s, t):
+        self.register(poses, t)
         self.run_ekf(poses, s, t)
         lr = fb = ud = yaw_rc = 0
         used = None
@@ -190,34 +247,50 @@ class Mission:
             if ID_LOW in poses:
                 self.seen_once, self.last_seen = True, t
                 used = poses[ID_LOW]
+                self.last_low = used
                 lr, fb, ud, ok = center_on(used, check_y=False)
                 if self.debounce(ok):
                     self.goto('CLIMB', t)
             else:
                 self.stable = 0
                 if not self.seen_once:
+                    # not seen yet: the marker is probably ABOVE the camera -> climb slowly
+                    if isinstance(tof, (int, float)) and 20 < tof < SEARCH_MAX_CM:
+                        ud = SEARCH_UP_RC
                     if t - self.t_stage > START_WAIT_S:
                         self.land(f'(ID {ID_LOW} nunca visto)')
                 else:
+                    # seen before, just lost it: move towards where it was last seen
+                    x_l, y_l, _ = self.last_low
+                    if abs(y_l) >= abs(x_l):
+                        ud = MIN_RC if y_l < 0 else -MIN_RC     # y < 0 = marker was above
+                        if isinstance(tof, (int, float)) and tof >= SEARCH_MAX_CM:
+                            ud = min(ud, 0)                     # never search above SEARCH_MAX_CM
+                    else:
+                        lr = MIN_RC if x_l > 0 else -MIN_RC     # x > 0 = marker was to the right
                     self.check_lost(t, ID_LOW)
 
         elif st == 'CLIMB':
-            if ID_TOP in poses:
-                used = poses[ID_TOP]
+            # if ID_TOP in poses:
+            #     used = poses[ID_TOP]
+            if ID_MID in poses:                      # ID_MID is now the top point
+                used = poses[ID_MID]
                 lr, fb, ud, ok = center_on(used)
                 if self.debounce(ok):
                     self.wp = 0
                     self.goto('WAYPOINTS', t)
             else:
                 ud = CLIMB_RC
-                for mid in (ID_MID, ID_LOW):
+                # for mid in (ID_MID, ID_LOW):
+                for mid in (ID_LOW,):                # ID_MID is the target now, only ID_LOW helps while climbing
                     if mid in poses:
                         used = poses[mid]
                         lr, fb, _, _ = center_on(used)
                         break
                 if isinstance(h, (int, float)) and h > MAX_CLIMB_CM:
                     ud = 0
-                    self.land(f'(h={h} sem ID {ID_TOP})')
+                    # self.land(f'(h={h} sem ID {ID_TOP})')
+                    self.land(f'(h={h} sem ID {ID_MID})')
                 if t - self.t_stage > CLIMB_TIMEOUT_S:
                     self.land('(timeout CLIMB)')
 
@@ -226,6 +299,8 @@ class Mission:
             lr, fb, yaw_rc, dist = self.fly_to(X_w, Y_w, look_id)
             if h_cm is not None and isinstance(tof, (int, float)) and 20 < tof < 300:
                 ud = clamp(K_H * (h_cm - tof))
+            elif h_cm is None and look_id in poses:
+                ud = p_cmd(-poses[look_id][1], min_rc=MIN_UD_RC)   # follow the height of the marker we look at
             sig = self.ekf.sigma_xy()
             if sig > SIGMA_LAND_M:
                 self.land(f'(EKF perdido: sigma={sig:.2f} m)')
@@ -243,15 +318,36 @@ class Mission:
                     self.wp += 1
                     self.goto('WAYPOINTS', t)
                 else:
-                    self.goto('HOLD', t)
+                    self.goto('PLANT', t)
             elif t - self.t_stage > WP_TIMEOUT_S:
                 self.land(f'(timeout WP {self.wp + 1})')
 
-        elif st == 'HOLD':
-            X_w, Y_w, _, look_id = WAYPOINTS[-1]
-            lr, fb, yaw_rc, _ = self.fly_to(X_w, Y_w, look_id)
+        elif st == 'PLANT':
+            # fly up to the plant marker (vision) and land PLANT_DIST_M in front of it
+            if ID_PLANT in poses:
+                self.last_seen = t
+                used = poses[ID_PLANT]
+                lr, fb, ud, ok = center_on(used, target_dist=PLANT_DIST_M)
+                if self.debounce(ok):
+                    x, y, _ = self.ekf.mu
+                    print(f'[PLANT] in front of the plant: EKF=({x:+.2f}, {y:+.2f}) -> landing', flush=True)
+                    self.goto('HOLD', t)
+            else:
+                # marker briefly out of view: keep heading for the plant with the EKF
+                self.stable = max(0, self.stable - 2)
+                mx, my = MAP[ID_PLANT]
+                lr, fb, yaw_rc, _ = self.fly_to(mx - PLANT_DIST_M, my, ID_PLANT)
+                if t - self.last_seen > LOST_LAND_S:
+                    self.land(f'(ID {ID_PLANT} perdido em PLANT)')
+            if t - self.t_stage > PLANT_TIMEOUT_S:
+                self.land('(timeout PLANT)')
+
+        elif st == 'HOLD':                       # short pause in front of the plant, then land
+            if ID_PLANT in poses:
+                used = poses[ID_PLANT]
+                lr, fb, ud, _ = center_on(used, target_dist=PLANT_DIST_M)
             if t - self.t_stage > HOLD_S:
-                self.land('(fim da parte 2)')
+                self.land('(fim da parte 2: pousou perto da planta)')
                 if self.dry:
                     self.__init__(dry_run=True)
 
@@ -274,6 +370,7 @@ def main():
     safety = Safety(io.t, max_height_cm=200, min_battery=20,
                     stall_stop_s=1, stall_land_s=3, max_mission_s=120)
     started = airborne_possible = False
+    mission = None
 
     with log_path.open('w', newline='') as f:
         log = csv.writer(f)
@@ -349,7 +446,8 @@ def main():
                 if ids is not None:
                     cv2.aruco.drawDetectedMarkers(frame, corners, ids)
                 txt1 = f'{stage_note} wp={mission.wp + 1} lr={lr} fb={fb} ud={ud} yaw={yaw_rc} h={h} tof={tof}'
-                txt2 = f'EKF x={ex:+.2f} y={ey:+.2f} th={np.degrees(eth):+.0f} sigma={sig:.2f}  ids={sorted(poses)}'
+                txt2 = (f'EKF x={ex:+.2f} y={ey:+.2f} th={np.degrees(eth):+.0f} sigma={sig:.2f}  '
+                        f'ids={sorted(poses)}  registered={sorted(mission.seen)}')
                 cv2.putText(frame, txt1, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 2)
                 cv2.putText(frame, txt2, (10, 58), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 255), 2)
                 cv2.imshow('part 2', frame)
@@ -377,6 +475,8 @@ def main():
                 safety.stop()
             cv2.destroyAllWindows()
             io.close()
+            if mission is not None:
+                mission.summary()
             print('[FINAL] log=', log_path, 'state=', io.state.value, flush=True)
             if airborne_possible:
                 print('[ATENCAO] Confira visualmente que o drone pousou.', flush=True)
