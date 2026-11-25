@@ -6,11 +6,11 @@ Autonomous DJI/Ryze Tello mission using ArUco markers, a known marker map and EK
 (Probabilistic Robotics, TEL310).
 
 The repository has several folders. **Everything needed to run the drone challenge is in
-`DRONE_CHALLENG/`.** Run all commands from inside that folder.
+`DRONE_CHALLENGE/`.** Run all commands from inside that folder.
 
 ```bash
 git clone https://github.com/ThaisAngelo119113617/drone-competition.git
-cd drone-competition/DRONE_CHALLENG
+cd drone-competition/DRONE_CHALLENGE
 ```
 
 ---
@@ -41,7 +41,7 @@ Localization:
 ```
 drone-competition/
 ├── README.md                          # this file
-├── DRONE_CHALLENG/                    # <-- THE CHALLENGE: everything needed to fly the mission
+├── DRONE_CHALLENGE/                    # <-- THE CHALLENGE: everything needed to fly the mission
 │   ├── mission_all_5.py               # MAIN PROGRAM: run this
 │   ├── ekf_tello.py                   # EKF for the hoop and the slalom (imported by mission_all_5.py)
 │   ├── pose_global.py                 # map loader and pose geometry (imported by ekf_tello.py)
@@ -54,5 +54,5 @@ drone-competition/
 └── side_notes_for_what_we_did/        # notes on the methods and formulas used
 ```
 
-**The file names in `DRONE_CHALLENG/` must stay exactly as above.** `mission_all_5.py` imports
+**The file names in `DRONE_CHALLENGE/` must stay exactly as above.** `mission_all_5.py` imports
 `ekf_tello` and `pose_global`. 
