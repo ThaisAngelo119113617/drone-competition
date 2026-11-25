@@ -39,7 +39,7 @@ except ImportError:  # non-POSIX
     termios = tty = None
 
 try:                                    # EKF in SHADOW mode (logs only; never drives the drone). Needs ekf_tello.py + pose_global.py + the map next to this file.
-    import ekf_tello as _ekf_mod
+    import TEST_FILES.tello_t19.ekf_tello as _ekf_mod
     from pose_global import load_map as _ekf_load_map
 except Exception as _ekf_err:           # missing files/modules: the mission runs exactly as before
     _ekf_mod = None
