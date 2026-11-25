@@ -1,2 +1,0 @@
-wall_time,monotonic_s,phase,seq,event,command,payload,rtt_ms,note
-2026-11-09T14:37:09.673+01:00,8781.587608,init,0,SEND,command,,,drained=0
