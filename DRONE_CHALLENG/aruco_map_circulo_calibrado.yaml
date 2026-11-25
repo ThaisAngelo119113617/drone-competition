@@ -1,0 +1,67 @@
+world_frame: circulo
+markers:
+  0:
+    position: [0.008, 0.0, 1.025]
+    normal_yaw_deg: 186.1
+    size: 0.115
+    measured: true
+    tilt_deg: -0.1
+  1:
+    position: [0.017, 0.0, 1.575]
+    normal_yaw_deg: 176.2
+    size: 0.115
+    measured: true
+    tilt_deg: -3.2
+  2:
+    position: [1.38, 0.133, 1.85]
+    normal_yaw_deg: 180.0
+    size: 0.115
+    measured: true
+    tilt_deg: 0.0
+  3:
+    position: [1.3, 0.133, 1.298]
+    normal_yaw_deg: 182.8
+    size: 0.115
+    measured: false
+    tilt_deg: -5.1
+  4:
+    position: [1.38, 0.133, 0.75]
+    normal_yaw_deg: 180.0
+    size: 0.115
+    measured: true
+    tilt_deg: 0.0
+  5:
+    position: [2.58, 0.133, 1.5]
+    normal_yaw_deg: 180.0
+    size: 0.115
+    measured: false
+    tilt_deg: 0.0
+  8:
+    position: [2.58, 0.13, 0.95]
+    normal_yaw_deg: 180.0
+    size: 0.115
+    measured: true
+    tilt_deg: 0.0
+  10:
+    position: [-0.035, 0.275, 1.3]
+    normal_yaw_deg: 179.5
+    size: 0.115
+    measured: true
+    tilt_deg: 3.2
+  12:
+    position: [0.01, -0.275, 1.3]
+    normal_yaw_deg: 178.3
+    size: 0.115
+    measured: true
+    tilt_deg: 0.2
+  17:
+    position: [2.58, 0.133, 1.82]
+    normal_yaw_deg: 180.0
+    size: 0.115
+    measured: false
+    tilt_deg: 0.0
+calibration: 'mapa unico aro + slalom vertical. Aro: calibrado (0,1,10,12 e ID3 x=1.30
+  mantido p/ nao mudar o EKF do aro). Slalom: ID2/ID4 x=1.38 medido (ID4 h=0.75, ID2
+  h=1.85); ID5/ID17 x=2.58 e ID8 x=2.70,y=0.13,z=0.97 estimados (confirmar na trena).
+  ATENCAO: ID3 em x=1.30 (aro) mas o quadro foi medido a 1.38; se o EKF do slalom
+  mostrar x deslocado ~8 cm, trocar o x do ID3 para 1.38.'

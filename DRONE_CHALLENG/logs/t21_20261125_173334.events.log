@@ -1,0 +1,376 @@
+17:33:35.134 Battery: 90%
+17:33:37.008 EKF shadow OFF (import failed: No module named 'ekf_tello'). Mission unaffected.
+17:33:37.010 T2.1 SLALOM part 1 ready. T,Y = start | SPACE = pause (rc zero, hover) | P/L = land | E/K = EMERGENCY (falls) | Q = quit
+17:33:38.472 CONFIRM TAKEOFF: press Y within 3 s (N cancels). Area clear? Observer ready?
+17:33:38.802 takeoff confirmed
+17:33:38.813 stale/unexpected response drained before takeoff: 'ok'
+17:33:38.813 TAKEOFF sent (single attempt, never retried)
+17:33:42.326 takeoff VERIFIED by telemetry: settled at alt=87cm (ack=None)
+17:33:42.356 FLYING: starting supervised height acquisition
+17:33:44.727 centre source: NO_MARKERS -> ID0_ONLY
+17:33:45.825 centre source: ID0_ONLY -> GUIDE
+17:33:48.666 guide vs pair centre: dx=-3.8 dy=-31.9 dz=+123.4 cm
+17:33:48.669 centre source: GUIDE -> MULTI
+17:33:48.724 centre source: MULTI -> GUIDE
+17:33:48.850 centre source: GUIDE -> MULTI
+17:33:49.272 centre source: MULTI -> GUIDE
+17:33:49.331 centre source: GUIDE -> MULTI
+17:33:50.030 HEIGHT REACHED (tof=127cm). Press G to align.
+17:33:50.034 MISSION: -> ALIGN
+17:33:50.091 AUTO ALIGN ON - lateral/vertical only
+17:33:50.668 guide vs pair centre: dx=-4.1 dy=-32.4 dz=+123.8 cm
+17:33:51.397 centre source: MULTI -> GUIDE
+17:33:51.459 centre source: GUIDE -> MULTI
+17:33:52.708 guide vs pair centre: dx=-4.0 dy=-30.8 dz=+126.8 cm
+17:33:54.276 centre source: MULTI -> GUIDE
+17:33:54.446 centre source: GUIDE -> MULTI
+17:33:54.628 centre source: MULTI -> GUIDE
+17:33:54.695 centre source: GUIDE -> MULTI
+17:33:54.752 guide vs pair centre: dx=-3.9 dy=-32.8 dz=+123.2 cm
+17:33:54.808 centre source: MULTI -> GUIDE
+17:33:54.870 centre source: GUIDE -> MULTI
+17:33:55.275 centre source: MULTI -> GUIDE
+17:33:55.338 centre source: GUIDE -> MULTI
+17:33:56.792 guide vs pair centre: dx=-4.6 dy=-32.0 dz=+129.2 cm
+17:33:57.110 ALIGNED within 5 cm for 1 s (x=+0.024 y=-0.049)
+17:33:58.270 centre source: MULTI -> GUIDE
+17:33:58.363 centre source: GUIDE -> MULTI
+17:33:58.598 centre source: MULTI -> GUIDE
+17:33:58.656 centre source: GUIDE -> MULTI
+17:33:58.772 centre source: MULTI -> GUIDE
+17:33:58.835 guide vs pair centre: dx=-3.9 dy=-32.9 dz=+129.8 cm
+17:33:58.836 centre source: GUIDE -> MULTI
+17:33:59.273 centre source: MULTI -> GUIDE
+17:33:59.518 centre source: GUIDE -> MULTI
+17:34:00.843 guide vs pair centre: dx=-5.0 dy=-32.3 dz=+128.5 cm
+17:34:00.903 ALIGNED within 5 cm for 1 s (x=-0.031 y=-0.042)
+17:34:02.860 centre source: MULTI -> GUIDE
+17:34:02.962 guide vs pair centre: dx=-3.5 dy=-32.8 dz=+129.5 cm
+17:34:02.968 centre source: GUIDE -> MULTI
+17:34:03.023 centre source: MULTI -> GUIDE
+17:34:03.323 centre source: GUIDE -> MULTI
+17:34:03.481 centre source: MULTI -> GUIDE
+17:34:03.589 centre source: GUIDE -> MULTI
+17:34:04.981 guide vs pair centre: dx=-5.0 dy=-31.5 dz=+127.7 cm
+17:34:06.379 centre source: MULTI -> GUIDE
+17:34:06.769 centre source: GUIDE -> MULTI
+17:34:06.832 centre source: MULTI -> GUIDE
+17:34:06.997 guide vs pair centre: dx=-4.8 dy=-33.6 dz=+123.4 cm
+17:34:07.000 centre source: GUIDE -> MULTI
+17:34:07.462 centre source: MULTI -> GUIDE
+17:34:07.701 centre source: GUIDE -> MULTI
+17:34:09.012 guide vs pair centre: dx=-5.7 dy=-31.6 dz=+129.2 cm
+17:34:09.174 ALIGNED within 5 cm for 1 s (x=-0.001 y=-0.003)
+17:34:10.215 MISSION: automatic CROSS, forward 127 cm
+17:34:10.253 CROSSING: forward 127 (single attempt)
+17:34:10.283 MISSION: -> CROSS
+17:34:10.566 stale/unexpected response drained before forward: 'ok'
+17:34:11.074 guide vs pair centre: dx=-5.8 dy=-35.8 dz=+124.8 cm
+17:34:11.366 centre source: MULTI -> GUIDE
+17:34:13.717 forward response: 'ok'
+17:34:13.719 forward 127 done (ok): hovering, mission continues
+17:34:14.355 FLYING: starting supervised height acquisition
+17:34:14.375 MISSION: -> APPROACH
+17:34:14.378 MISSION: CROSS done -> APPROACH ID3
+17:34:14.430 MISSION: -> DONE
+17:34:14.432 MISSION: ID3 at 0.77 m reached -> hover
+17:34:15.385 HEIGHT REACHED (tof=132cm). Press G to align.
+17:34:15.447 HANDOFF hoop -> slalom (EKF not confident), ID3 f=0.77 m
+17:34:15.451 MISSION: -> ALIGN3
+17:34:25.475 MISSION: -> UP
+17:34:37.739 MISSION: at 2.09 m, ID17 2.06 m ahead, frame-to-pole gap 1.32 m (learned); stop target ID17 at 0.87 m
+17:34:37.741 MISSION: -> OVER
+17:34:51.756 MISSION: ID17 at 0.91 m -> over the bar, stop
+17:34:51.760 MISSION: -> DESCEND
+17:35:02.318 MISSION: gap height reached (H=1.55 m)
+17:35:02.321 MISSION: -> BACK
+17:35:11.473 MISSION: back pass done, seen ID3, frame 0.43 m ahead (H=1.44 m)
+17:35:11.476 MISSION: -> FIND3
+17:35:11.536 MISSION: ID3 re-acquired: 0.43 m ahead, x=-0.05 m, height from marker 1.48 m (tof 148)
+17:35:11.542 MISSION: -> DOWN2
+17:35:14.701 MISSION: aligned with ID3 before the descent (x=-0.00 m, yaw err=+2.0 deg)
+17:35:22.040 MISSION: low gap height reached (H=0.99 m, frame 0.94 m ahead, x=-0.01 m)
+17:35:22.043 MISSION: -> CROSS2
+17:35:35.287 MISSION: 0.49 m beyond the frame (ID8 0.80 m ahead, frame-to-ID8 gap 1.29 m)
+17:35:35.289 MISSION: -> APPR8
+17:35:38.370 MISSION: ID8 at 0.69 m, x=+0.02 m -> hover
+17:35:38.373 MISSION: -> END
+17:35:38.694 WEAVE start (chained after the slalom): local x=+0.05 y=+0.00 (world +1.88, +0.13); 6 waypoints then the plant ID13
+17:35:38.697 MISSION: -> W_CLIMB
+17:35:38.758 WEAVE SEEN ID8 (purple bottom) at 0.70 m, t=0.1 s, phase=W_CLIMB
+17:35:46.800 WEAVE SEEN ID5 (purple top) at 0.62 m, t=8.1 s, phase=W_CLIMB
+17:35:48.909 WEAVE: centred on ID5 -> waypoints
+17:35:48.912 MISSION: -> W_WP
+17:35:50.993 WEAVE SEEN ID6 (blue) at 1.32 m, t=12.3 s, phase=W_WP
+17:35:51.104 WEAVE SEEN ID7 (green) at 1.97 m, t=12.4 s, phase=W_WP
+17:35:55.695 WEAVE SEEN ID13 (plant) at 3.64 m, t=17.0 s, phase=W_WP
+17:35:56.070 WEAVE WP 1/6 reached: EKF local=(+0.43, -0.32) sigma=0.03
+17:35:56.075 MISSION: -> W_WP
+17:36:01.983 WEAVE WP 2/6 reached: EKF local=(+1.02, -0.36) sigma=0.03
+17:36:01.986 MISSION: -> W_WP
+17:36:13.158 WEAVE WP 3/6 reached: EKF local=(+1.26, +0.32) sigma=0.03
+17:36:13.160 MISSION: -> W_WP
+17:36:19.675 WEAVE WP 4/6 reached: EKF local=(+1.77, +0.37) sigma=0.03
+17:36:19.676 MISSION: -> W_WP
+17:36:28.990 WEAVE WP 5/6 reached: EKF local=(+1.86, -0.31) sigma=0.18
+17:36:28.993 MISSION: -> W_WP
+17:36:35.109 WEAVE WP 6/6 reached: EKF local=(+2.37, -0.36) sigma=0.20
+17:36:35.113 MISSION: -> W_PLANT
+17:36:45.210 WEAVE: in front of the plant, EKF local=(+3.28, -0.16)
+17:36:45.214 MISSION: -> W_HOLD
+17:36:46.255 WEAVE complete (ID8=OK, ID5=OK, ID6=OK, ID7=OK, ID13=OK) -> plant lap
+17:36:46.262 PLANT start (chained after the weave): EKF at (-0.85,-0.07) from the centre, nose +X; stop_R=1.10m corner_xy=±0.85m, hover 1.0 s, 12 route points, stop after "18", flight limit 540 s
+17:36:46.263 MISSION: -> P_STOP
+17:36:46.317 WEAVE SEEN ID13 (plant) at 0.60 m, t=0.1 s, phase=P_STOP
+17:36:46.322 WEAVE SEEN ID18 (aux (right of 19)) at 2.27 m, t=0.1 s, phase=P_STOP
+17:36:46.323 PLANT ALIGN ID13: x=+0.027m z=0.59m target=0.85m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=+0.109m (not gated) tof=96.0cm stable=1/12 hold=False rc=(0,0,0,0)
+17:36:46.323 PLANT P_STOP pt=1/12 EKF=(-0.86,-0.08) th=+10 r=0.86 sig=0.05 seen=[13, 18] rc=(0,0,0,0)
+17:36:46.859 PLANT stop align: visually centred ID13 at z=0.59m x=+0.034m (visual_y=+0.133m diagnostic only), tof=99.0cm; hovering 1.0 s
+17:36:46.973 PLANT ALIGN ID13: x=+0.036m z=0.59m target=0.85m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.03 y=+0.133m (not gated) tof=99.0cm stable=12/12 hold=True rc=(0,0,0,0)
+17:36:47.576 PLANT ALIGN ID13: x=+0.041m z=0.59m target=0.85m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.03 y=+0.123m (not gated) tof=98.0cm stable=12/12 hold=True rc=(0,0,0,0)
+17:36:47.825 PLANT P_STOP pt=1/12 EKF=(-0.86,-0.06) th=+10 r=0.87 sig=0.03 seen=[13, 18] rc=(0,0,0,0)
+17:36:47.887 PLANT stop align (ID13) done: EKF=(-0.86,-0.06) th=+10 sigma=0.03
+17:36:47.891 MISSION: -> P_WP
+17:36:49.359 PLANT P_WP pt=2/12 EKF=(-0.87,+0.01) th=+7 r=0.87 sig=0.03 seen=[13, 18] rc=(-15,2,0,8)
+17:36:50.266 WEAVE SEEN ID19 (final) at 2.22 m, t=4.0 s, phase=P_WP
+17:36:50.903 PLANT P_WP pt=2/12 EKF=(-0.87,+0.24) th=-1 r=0.90 sig=0.03 seen=[13, 19] rc=(-15,0,0,14)
+17:36:52.440 PLANT P_WP pt=2/12 EKF=(-0.85,+0.42) th=-13 r=0.95 sig=0.03 seen=[9, 13, 18, 19] rc=(-15,-3,0,12)
+17:36:52.954 WEAVE SEEN ID9 (plant left) at 0.74 m, t=6.7 s, phase=P_WP
+17:36:53.960 PLANT P_WP pt=2/12 EKF=(-0.80,+0.55) th=-21 r=0.97 sig=0.03 seen=[9, 13, 18, 19] rc=(-13,-8,0,13)
+17:36:55.474 PLANT P_WP pt=2/12 EKF=(-0.82,+0.70) th=-28 r=1.08 sig=0.03 seen=[9, 13, 18, 19] rc=(-11,-10,0,12)
+17:36:56.185 PLANT reached point 2/12 (C13_09): EKF=(-0.84,+0.78) th=-31 sigma=0.03
+17:36:56.187 MISSION: -> P_CORNER
+17:36:57.031 PLANT P_CORNER pt=2/12 EKF=(-0.85,+0.85) th=-34 r=1.20 sig=0.03 seen=[9, 13, 18, 19] rc=(0,0,0,11)
+17:36:58.553 PLANT P_CORNER pt=2/12 EKF=(-0.86,+0.84) th=-38 r=1.20 sig=0.03 seen=[9, 13, 18, 19] rc=(0,0,0,8)
+17:36:58.865 PLANT corner C13_09 confirmed: accepted_fixes=[13, 9] yawerr=5.9 deg sigma=0.03m
+17:36:58.866 MISSION: -> P_WP
+17:37:00.094 PLANT P_WP pt=3/12 EKF=(-0.84,+0.85) th=-42 r=1.19 sig=0.03 seen=[9, 13, 18, 19] rc=(-14,6,8,8)
+17:37:01.639 PLANT P_WP pt=3/12 EKF=(-0.69,+0.91) th=-46 r=1.14 sig=0.03 seen=[9, 13, 18, 19] rc=(-14,5,0,8)
+17:37:02.961 PLANT via V13_09 passed: EKF=(-0.53,+0.97) dist=0.15m; next waypoint
+17:37:03.141 PLANT P_WP pt=4/12 EKF=(-0.51,+0.98) th=-50 r=1.11 sig=0.03 seen=[9, 13, 18, 19] rc=(-11,10,8,8)
+17:37:04.669 PLANT P_WP pt=4/12 EKF=(-0.41,+1.04) th=-55 r=1.12 sig=0.03 seen=[9, 13, 18, 19] rc=(0,0,8,9)
+17:37:06.163 PLANT P_WP pt=4/12 EKF=(-0.42,+1.02) th=-59 r=1.11 sig=0.03 seen=[9, 13, 18] rc=(-11,10,0,8)
+17:37:07.694 PLANT P_WP pt=4/12 EKF=(-0.23,+1.00) th=-62 r=1.03 sig=0.03 seen=[9, 18] rc=(0,0,0,10)
+17:37:07.926 PLANT ID9 NOT VISIBLE: translation blocked, yaw=14; last_age=0.05s
+17:37:08.541 PLANT ID9 NOT VISIBLE: translation blocked, yaw=14; last_age=0.67s
+17:37:09.198 PLANT P_WP pt=4/12 EKF=(-0.11,+0.98) th=-69 r=0.99 sig=0.04 seen=[9, 18] rc=(0,0,8,10)
+17:37:10.747 PLANT P_WP pt=4/12 EKF=(-0.17,+0.93) th=-75 r=0.95 sig=0.04 seen=[9] rc=(-15,3,15,8)
+17:37:11.829 PLANT reached point 4/12 (09): EKF=(-0.08,+0.95) th=-75 sigma=0.04
+17:37:11.829 MISSION: -> P_STOP
+17:37:11.891 PLANT ALIGN ID9: x=+0.228m z=0.75m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.04 y=-0.037m (not gated) tof=85.0cm stable=0/12 hold=False rc=(0,0,17,9)
+17:37:12.270 PLANT P_STOP pt=4/12 EKF=(-0.06,+0.97) th=-75 r=0.97 sig=0.05 seen=[9] rc=(0,0,15,10)
+17:37:12.505 PLANT ALIGN ID9: x=+0.267m z=0.75m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.05 y=-0.020m (not gated) tof=87.0cm stable=0/12 hold=False rc=(0,0,8,10)
+17:37:13.109 PLANT ALIGN ID9: x=+0.253m z=0.75m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.05 y=+0.001m (not gated) tof=88.0cm stable=0/12 hold=False rc=(0,0,8,10)
+17:37:13.726 PLANT ALIGN ID9: x=+0.244m z=0.75m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.05 y=+0.015m (not gated) tof=90.0cm stable=0/12 hold=False rc=(0,0,8,9)
+17:37:13.772 PLANT P_STOP pt=4/12 EKF=(-0.03,+0.97) th=-78 r=0.97 sig=0.06 seen=[9] rc=(0,0,8,9)
+17:37:14.344 PLANT ALIGN ID9: x=+0.243m z=0.75m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.05 y=+0.006m (not gated) tof=89.0cm stable=0/12 hold=False rc=(0,0,8,9)
+17:37:14.964 PLANT ALIGN ID9: x=+0.239m z=0.75m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.06 y=-0.015m (not gated) tof=87.0cm stable=0/12 hold=False rc=(0,0,8,9)
+17:37:15.293 PLANT P_STOP pt=4/12 EKF=(-0.02,+0.97) th=-80 r=0.97 sig=0.06 seen=[9] rc=(0,0,8,9)
+17:37:15.585 PLANT ALIGN ID9: x=+0.212m z=0.77m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.06 y=-0.023m (not gated) tof=86.0cm stable=0/12 hold=False rc=(0,0,15,8)
+17:37:16.197 PLANT ALIGN ID9: x=+0.181m z=0.77m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.06 y=-0.007m (not gated) tof=88.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:37:16.818 PLANT ALIGN ID9: x=+0.165m z=0.78m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.06 y=+0.006m (not gated) tof=89.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:37:16.822 PLANT P_STOP pt=4/12 EKF=(-0.04,+0.98) th=-83 r=0.98 sig=0.06 seen=[9] rc=(0,0,8,8)
+17:37:17.428 PLANT ALIGN ID9: x=+0.138m z=0.78m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=+0.020m (not gated) tof=91.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:37:18.051 PLANT ALIGN ID9: x=+0.101m z=0.78m target=0.76m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.036m (not gated) tof=92.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:37:18.330 PLANT P_STOP pt=4/12 EKF=(-0.05,+0.98) th=-88 r=0.98 sig=0.07 seen=[9] rc=(0,0,8,8)
+17:37:18.664 PLANT ALIGN ID9: x=+0.060m z=0.78m target=0.76m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.053m (not gated) tof=94.0cm stable=1/12 hold=False rc=(0,0,0,0)
+17:37:19.204 PLANT stop 09: visually centred ID9 at z=0.77m x=+0.038m (visual_y=+0.063m diagnostic only), tof=95.0cm; hovering 1.0 s
+17:37:19.295 PLANT ALIGN ID9: x=+0.037m z=0.76m target=0.76m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.063m (not gated) tof=95.0cm stable=12/12 hold=True rc=(0,0,0,0)
+17:37:19.856 PLANT P_STOP pt=4/12 EKF=(-0.08,+0.97) th=-91 r=0.97 sig=0.07 seen=[9] rc=(0,0,0,0)
+17:37:19.915 PLANT ALIGN ID9: x=+0.013m z=0.78m target=0.76m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.084m (not gated) tof=98.0cm stable=12/12 hold=True rc=(0,0,0,0)
+17:37:20.244 PLANT stop 09 (ID9) done: EKF=(-0.09,+0.98) th=-92 sigma=0.07
+17:37:20.247 MISSION: -> P_WP
+17:37:21.373 PLANT P_WP pt=5/12 EKF=(-0.08,+0.95) th=-90 r=0.95 sig=0.07 seen=[9] rc=(-15,1,8,-8)
+17:37:22.875 PLANT P_WP pt=5/12 EKF=(+0.09,+0.95) th=-90 r=0.95 sig=0.08 seen=[9] rc=(-15,2,0,8)
+17:37:24.408 PLANT P_WP pt=5/12 EKF=(+0.32,+0.94) th=-94 r=0.99 sig=0.13 seen=[] rc=(-15,1,0,14)
+17:37:25.912 PLANT P_WP pt=5/12 EKF=(+0.43,+0.92) th=-105 r=1.01 sig=0.19 seen=[11] rc=(-15,-2,0,9)
+17:37:26.836 WEAVE SEEN ID11 (plant back) at 1.00 m, t=40.6 s, phase=P_WP
+17:37:26.987 PLANT reached point 5/12 (C09_11): EKF=(+0.83,+0.83) th=-104 sigma=0.10
+17:37:26.995 MISSION: -> P_CORNER
+17:37:27.441 PLANT P_CORNER pt=5/12 EKF=(+0.88,+0.81) th=-105 r=1.20 sig=0.10 seen=[11] rc=(0,0,8,20)
+17:37:28.962 PLANT P_CORNER pt=5/12 EKF=(+0.94,+0.79) th=-111 r=1.23 sig=0.11 seen=[11] rc=(0,0,8,20)
+17:37:30.489 PLANT P_CORNER pt=5/12 EKF=(+0.91,+0.80) th=-124 r=1.22 sig=0.12 seen=[9, 11] rc=(0,0,8,15)
+17:37:32.053 PLANT corner C09_11 confirmed: accepted_fixes=[11] yawerr=4.3 deg sigma=0.12m
+17:37:32.056 MISSION: -> P_WP
+17:37:32.116 PLANT P_WP pt=6/12 EKF=(+0.88,+0.81) th=-131 r=1.20 sig=0.12 seen=[9, 11] rc=(-11,10,8,8)
+17:37:33.623 PLANT P_WP pt=6/12 EKF=(+0.87,+0.71) th=-134 r=1.13 sig=0.11 seen=[9, 11] rc=(-12,9,8,8)
+17:37:34.620 PLANT via V09_11 passed: EKF=(+0.90,+0.54) dist=0.14m; next waypoint
+17:37:35.140 PLANT P_WP pt=7/12 EKF=(+0.93,+0.40) th=-147 r=1.01 sig=0.05 seen=[9, 11] rc=(-13,8,0,8)
+17:37:36.693 PLANT P_WP pt=7/12 EKF=(+0.98,+0.17) th=-150 r=1.00 sig=0.05 seen=[11] rc=(0,0,8,8)
+17:37:38.234 PLANT P_WP pt=7/12 EKF=(+1.00,+0.17) th=-155 r=1.01 sig=0.06 seen=[11] rc=(0,0,0,8)
+17:37:39.761 PLANT P_WP pt=7/12 EKF=(+1.03,+0.15) th=-159 r=1.04 sig=0.06 seen=[11] rc=(-10,11,-8,8)
+17:37:40.690 PLANT reached point 7/12 (11): EKF=(+1.01,+0.05) th=-162 sigma=0.06
+17:37:40.694 MISSION: -> P_STOP
+17:37:40.754 PLANT ALIGN ID11: x=+0.181m z=0.73m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.06 y=+0.089m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:37:41.267 PLANT P_STOP pt=7/12 EKF=(+0.98,+0.00) th=-164 r=0.98 sig=0.06 seen=[11] rc=(0,0,-8,8)
+17:37:41.369 PLANT ALIGN ID11: x=+0.191m z=0.68m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.06 y=+0.090m (not gated) tof=101.0cm stable=0/12 hold=False rc=(0,0,-8,8)
+17:37:42.023 PLANT ALIGN ID11: x=+0.173m z=0.67m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.06 y=+0.080m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:37:42.671 PLANT ALIGN ID11: x=+0.145m z=0.68m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=+0.071m (not gated) tof=99.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:37:42.784 PLANT P_STOP pt=7/12 EKF=(+0.94,-0.01) th=-169 r=0.94 sig=0.07 seen=[11] rc=(0,0,0,8)
+17:37:43.287 PLANT ALIGN ID11: x=+0.111m z=0.68m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.082m (not gated) tof=99.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:37:43.897 PLANT ALIGN ID11: x=+0.084m z=0.70m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.079m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:37:44.339 PLANT P_STOP pt=7/12 EKF=(+0.96,-0.00) th=-174 r=0.96 sig=0.07 seen=[11] rc=(0,0,0,8)
+17:37:44.510 PLANT ALIGN ID11: x=+0.063m z=0.71m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.075m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:37:45.129 PLANT ALIGN ID11: x=+0.046m z=0.70m target=0.85m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.073m (not gated) tof=99.0cm stable=11/12 hold=False rc=(0,0,0,0)
+17:37:45.185 PLANT stop 11: visually centred ID11 at z=0.71m x=+0.048m (visual_y=+0.073m diagnostic only), tof=99.0cm; hovering 1.0 s
+17:37:45.763 PLANT ALIGN ID11: x=+0.045m z=0.70m target=0.85m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=+0.085m (not gated) tof=100.0cm stable=12/12 hold=True rc=(0,0,0,0)
+17:37:45.871 PLANT P_STOP pt=7/12 EKF=(+0.96,+0.00) th=-176 r=0.96 sig=0.07 seen=[11] rc=(0,0,0,0)
+17:37:46.202 PLANT stop 11 (ID11) done: EKF=(+0.95,+0.01) th=-176 sigma=0.07
+17:37:46.202 MISSION: -> P_WP
+17:37:47.381 PLANT P_WP pt=8/12 EKF=(+0.93,-0.01) th=-176 r=0.93 sig=0.07 seen=[11] rc=(-14,6,-8,8)
+17:37:48.906 PLANT P_WP pt=8/12 EKF=(+0.86,-0.20) th=+179 r=0.88 sig=0.07 seen=[11] rc=(-14,4,0,11)
+17:37:50.425 PLANT P_WP pt=8/12 EKF=(+0.83,-0.39) th=+170 r=0.91 sig=0.11 seen=[16] rc=(-15,3,0,14)
+17:37:50.625 WEAVE SEEN ID16 (plant right) at 0.79 m, t=64.4 s, phase=P_WP
+17:37:51.939 PLANT P_WP pt=8/12 EKF=(+0.86,-0.22) th=-179 r=0.89 sig=0.03 seen=[11, 16] rc=(0,0,-8,16)
+17:37:53.459 PLANT P_WP pt=8/12 EKF=(+0.83,-0.20) th=+178 r=0.86 sig=0.03 seen=[11, 16] rc=(-15,3,-8,11)
+17:37:54.966 PLANT P_WP pt=8/12 EKF=(+0.85,-0.37) th=+171 r=0.93 sig=0.04 seen=[11, 16] rc=(-14,4,0,14)
+17:37:56.476 PLANT P_WP pt=8/12 EKF=(+0.62,-0.50) th=+162 r=0.80 sig=0.06 seen=[] rc=(0,0,0,20)
+17:37:58.004 PLANT P_WP pt=8/12 EKF=(+0.60,-0.48) th=+152 r=0.77 sig=0.05 seen=[11, 16] rc=(-9,-12,0,10)
+17:37:59.529 PLANT P_WP pt=8/12 EKF=(+0.67,-0.61) th=+148 r=0.91 sig=0.06 seen=[16] rc=(-10,-11,-8,10)
+17:37:59.675 PLANT reached point 8/12 (C11_16): EKF=(+0.68,-0.63) th=+147 sigma=0.06
+17:37:59.677 MISSION: -> P_CORNER
+17:38:01.044 PLANT P_CORNER pt=8/12 EKF=(+0.70,-0.72) th=+142 r=1.00 sig=0.07 seen=[16] rc=(0,0,-8,8)
+17:38:01.665 PLANT corner C11_16 confirmed: accepted_fixes=[16] yawerr=5.9 deg sigma=0.07m
+17:38:01.670 MISSION: -> P_WP
+17:38:02.560 PLANT P_WP pt=9/12 EKF=(+0.67,-0.70) th=+138 r=0.97 sig=0.07 seen=[16] rc=(-15,-1,0,8)
+17:38:04.076 PLANT P_WP pt=9/12 EKF=(+0.51,-0.81) th=+135 r=0.96 sig=0.07 seen=[16] rc=(-14,-5,0,13)
+17:38:05.040 PLANT via V11_16 passed: EKF=(+0.42,-0.90) dist=0.15m; next waypoint
+17:38:05.616 PLANT P_WP pt=10/12 EKF=(+0.39,-0.93) th=+129 r=1.01 sig=0.08 seen=[16] rc=(0,0,0,8)
+17:38:07.129 PLANT P_WP pt=10/12 EKF=(+0.39,-0.95) th=+126 r=1.02 sig=0.08 seen=[16] rc=(-15,4,0,8)
+17:38:08.665 PLANT P_WP pt=10/12 EKF=(+0.27,-1.04) th=+122 r=1.07 sig=0.09 seen=[16] rc=(0,0,-8,8)
+17:38:10.173 PLANT P_WP pt=10/12 EKF=(+0.27,-1.04) th=+118 r=1.08 sig=0.09 seen=[16] rc=(-14,4,0,8)
+17:38:11.686 PLANT reached point 10/12 (16): EKF=(+0.10,-1.08) th=+114 sigma=0.10
+17:38:11.689 MISSION: -> P_STOP
+17:38:11.737 PLANT ALIGN ID16: x=+0.242m z=0.79m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.10 y=+0.121m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,0,9)
+17:38:11.738 PLANT P_STOP pt=10/12 EKF=(+0.10,-1.08) th=+114 r=1.09 sig=0.10 seen=[16] rc=(0,0,0,9)
+17:38:12.371 PLANT ALIGN ID16: x=+0.229m z=0.79m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.10 y=+0.121m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,0,9)
+17:38:12.979 PLANT ALIGN ID16: x=+0.191m z=0.80m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.10 y=+0.123m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:38:13.255 PLANT P_STOP pt=10/12 EKF=(+0.11,-1.07) th=+110 r=1.08 sig=0.10 seen=[16] rc=(0,0,0,8)
+17:38:13.584 PLANT ALIGN ID16: x=+0.161m z=0.81m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=False view_ok=True fix_ok=True sigma=0.10 y=+0.125m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:38:14.195 PLANT ALIGN ID16: x=+0.128m z=0.81m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.10 y=+0.133m (not gated) tof=102.0cm stable=0/12 hold=False rc=(0,0,-8,8)
+17:38:14.822 PLANT ALIGN ID16: x=+0.098m z=0.81m target=0.85m x_ok=False range_ok=True pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.10 y=+0.139m (not gated) tof=102.0cm stable=0/12 hold=False rc=(-15,0,-8,8)
+17:38:14.823 PLANT P_STOP pt=10/12 EKF=(+0.12,-1.07) th=+105 r=1.08 sig=0.10 seen=[16] rc=(-15,0,-8,8)
+17:38:15.481 PLANT ALIGN ID16: x=+0.114m z=0.81m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.10 y=+0.136m (not gated) tof=102.0cm stable=0/12 hold=False rc=(0,0,-8,8)
+17:38:16.088 PLANT ALIGN ID16: x=+0.129m z=0.80m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.10 y=+0.136m (not gated) tof=102.0cm stable=0/12 hold=False rc=(0,0,-8,8)
+17:38:16.345 PLANT P_STOP pt=10/12 EKF=(+0.04,-1.07) th=+101 r=1.07 sig=0.10 seen=[13, 16] rc=(0,0,-8,8)
+17:38:16.714 PLANT ALIGN ID16: x=+0.102m z=0.80m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.08 y=+0.135m (not gated) tof=102.0cm stable=0/12 hold=False rc=(0,0,-8,8)
+17:38:17.338 PLANT ALIGN ID16: x=+0.061m z=0.81m target=0.85m x_ok=False range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.04 y=+0.130m (not gated) tof=101.0cm stable=0/12 hold=False rc=(0,0,-8,8)
+17:38:17.871 PLANT P_STOP pt=10/12 EKF=(+0.00,-1.01) th=+94 r=1.01 sig=0.04 seen=[13, 16] rc=(0,0,0,0)
+17:38:17.917 PLANT stop 16: visually centred ID16 at z=0.81m x=+0.041m (visual_y=+0.127m diagnostic only), tof=100.0cm; hovering 1.0 s
+17:38:17.970 PLANT ALIGN ID16: x=+0.041m z=0.81m target=0.85m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.04 y=+0.127m (not gated) tof=101.0cm stable=12/12 hold=True rc=(0,0,-8,0)
+17:38:18.578 PLANT ALIGN ID16: x=+0.037m z=0.81m target=0.85m x_ok=True range_ok=True pos_ok=True yaw_ok=True view_ok=True fix_ok=True sigma=0.04 y=+0.127m (not gated) tof=101.0cm stable=12/12 hold=True rc=(0,0,-8,0)
+17:38:18.952 PLANT stop 16 (ID16) done: EKF=(+0.00,-1.03) th=+93 sigma=0.04
+17:38:18.953 MISSION: -> P_WP
+17:38:19.399 PLANT P_WP pt=11/12 EKF=(+0.00,-1.04) th=+93 r=1.04 sig=0.04 seen=[13, 16] rc=(-14,4,0,0)
+17:38:20.913 PLANT P_WP pt=11/12 EKF=(-0.09,-1.03) th=+92 r=1.03 sig=0.04 seen=[13, 16] rc=(-14,4,0,8)
+17:38:22.465 PLANT P_WP pt=11/12 EKF=(-0.25,-1.05) th=+90 r=1.08 sig=0.04 seen=[13, 16] rc=(-14,5,0,13)
+17:38:23.987 PLANT P_WP pt=11/12 EKF=(-0.39,-1.08) th=+85 r=1.14 sig=0.04 seen=[13, 16] rc=(-14,5,0,14)
+17:38:25.502 PLANT P_WP pt=11/12 EKF=(-0.44,-1.10) th=+82 r=1.18 sig=0.04 seen=[13, 16] rc=(-14,6,-8,13)
+17:38:27.028 PLANT P_WP pt=11/12 EKF=(-0.60,-1.11) th=+74 r=1.26 sig=0.05 seen=[13, 16] rc=(-13,8,0,12)
+17:38:28.230 PLANT reached point 11/12 (C16_13): EKF=(-0.76,-0.82) th=+68 sigma=0.05
+17:38:28.237 MISSION: -> P_CORNER
+17:38:28.571 PLANT P_CORNER pt=11/12 EKF=(-0.78,-0.79) th=+66 r=1.11 sig=0.06 seen=[13, 19] rc=(0,0,0,20)
+17:38:30.122 PLANT P_CORNER pt=11/12 EKF=(-0.78,-0.80) th=+55 r=1.12 sig=0.06 seen=[13, 18, 19] rc=(0,0,0,9)
+17:38:31.315 PLANT corner C16_13 confirmed: accepted_fixes=[13] yawerr=5.8 deg sigma=0.07m
+17:38:31.319 PLANT ID18 leg: visual servo from point 11 (no EKF waypoint)
+17:38:31.319 MISSION: -> P_STOP
+17:38:31.366 PLANT ALIGN ID18: x=+0.878m z=2.36m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.07 y=-0.146m (not gated) tof=101.0cm stable=0/12 hold=False rc=(0,0,8,14)
+17:38:31.667 PLANT P_STOP pt=12/12 EKF=(-0.78,-0.80) th=+50 r=1.12 sig=0.07 seen=[13, 18, 19] rc=(0,0,8,14)
+17:38:31.968 PLANT ALIGN ID18: x=+0.795m z=2.43m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.07 y=-0.143m (not gated) tof=102.0cm stable=0/12 hold=False rc=(0,0,8,14)
+17:38:32.577 PLANT ALIGN ID18: x=+0.646m z=2.46m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.07 y=-0.130m (not gated) tof=104.0cm stable=0/12 hold=False rc=(0,0,8,14)
+17:38:33.182 PLANT ALIGN ID18: x=+0.503m z=2.51m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.08 y=-0.116m (not gated) tof=104.0cm stable=0/12 hold=False rc=(0,0,8,14)
+17:38:33.185 PLANT P_STOP pt=12/12 EKF=(-0.78,-0.80) th=+42 r=1.12 sig=0.08 seen=[13, 18, 19] rc=(0,0,8,14)
+17:38:33.798 PLANT ALIGN ID18: x=+0.379m z=2.53m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.08 y=-0.116m (not gated) tof=105.0cm stable=0/12 hold=False rc=(0,0,8,14)
+17:38:34.424 PLANT ALIGN ID18: x=+0.259m z=2.54m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.08 y=-0.124m (not gated) tof=104.0cm stable=0/12 hold=False rc=(0,0,8,10)
+17:38:34.693 PLANT P_STOP pt=12/12 EKF=(-0.79,-0.77) th=+35 r=1.11 sig=0.08 seen=[13, 18, 19] rc=(0,0,8,8)
+17:38:35.053 PLANT ALIGN ID18: x=+0.178m z=2.56m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.08 y=-0.134m (not gated) tof=103.0cm stable=0/12 hold=False rc=(0,15,8,0)
+17:38:35.673 PLANT ALIGN ID18: x=+0.140m z=2.55m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.08 y=-0.121m (not gated) tof=104.0cm stable=0/12 hold=False rc=(0,15,8,0)
+17:38:36.252 PLANT P_STOP pt=12/12 EKF=(-0.77,-0.77) th=+34 r=1.09 sig=0.09 seen=[13, 18, 19] rc=(0,15,8,0)
+17:38:36.298 PLANT ALIGN ID18: x=+0.137m z=2.52m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.08 y=-0.114m (not gated) tof=105.0cm stable=0/12 hold=False rc=(0,15,8,0)
+17:38:36.918 PLANT ALIGN ID18: x=+0.134m z=2.43m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.09 y=-0.089m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:37.559 PLANT ALIGN ID18: x=+0.133m z=2.35m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.12 y=-0.084m (not gated) tof=106.0cm stable=0/12 hold=False rc=(0,15,8,0)
+17:38:37.766 PLANT P_STOP pt=12/12 EKF=(-0.57,-0.67) th=+34 r=0.88 sig=0.13 seen=[18, 19] rc=(0,15,8,0)
+17:38:38.169 PLANT ALIGN ID18: x=+0.136m z=2.30m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.15 y=-0.078m (not gated) tof=106.0cm stable=0/12 hold=False rc=(0,15,8,0)
+17:38:38.805 PLANT ALIGN ID18: x=+0.140m z=2.21m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.17 y=-0.055m (not gated) tof=109.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:39.302 PLANT P_STOP pt=12/12 EKF=(-0.34,-0.58) th=+34 r=0.67 sig=0.19 seen=[18, 19] rc=(0,15,0,0)
+17:38:39.457 PLANT ALIGN ID18: x=+0.150m z=2.13m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.19 y=-0.050m (not gated) tof=110.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:38:40.070 PLANT ALIGN ID18: x=+0.160m z=2.03m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.21 y=-0.054m (not gated) tof=108.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:38:40.703 PLANT ALIGN ID18: x=+0.123m z=1.98m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.23 y=-0.053m (not gated) tof=108.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:40.842 PLANT P_STOP pt=12/12 EKF=(-0.18,-0.51) th=+33 r=0.54 sig=0.24 seen=[18, 19] rc=(0,15,0,0)
+17:38:41.343 PLANT ALIGN ID18: x=+0.113m z=1.97m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.25 y=-0.060m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:41.962 PLANT ALIGN ID18: x=+0.122m z=1.93m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.26 y=-0.069m (not gated) tof=106.0cm stable=0/12 hold=False rc=(0,15,8,0)
+17:38:42.359 PLANT P_STOP pt=12/12 EKF=(-0.12,-0.49) th=+33 r=0.50 sig=0.27 seen=[18, 19] rc=(0,15,8,0)
+17:38:42.611 PLANT ALIGN ID18: x=+0.119m z=1.84m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=False view_ok=True fix_ok=False sigma=0.28 y=-0.049m (not gated) tof=108.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:43.230 PLANT ALIGN ID18: x=+0.123m z=1.78m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.09 y=-0.039m (not gated) tof=109.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:43.847 PLANT ALIGN ID18: x=+0.167m z=1.68m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=-0.057m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:38:43.895 PLANT P_STOP pt=12/12 EKF=(-0.31,-0.45) th=+3 r=0.55 sig=0.07 seen=[18, 19] rc=(0,0,0,8)
+17:38:44.479 PLANT ALIGN ID18: x=+0.222m z=1.62m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.07 y=-0.114m (not gated) tof=102.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:38:45.093 PLANT ALIGN ID18: x=+0.227m z=1.62m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=-0.135m (not gated) tof=100.0cm stable=0/12 hold=False rc=(0,0,8,9)
+17:38:45.452 PLANT P_STOP pt=12/12 EKF=(-0.25,-0.27) th=-1 r=0.37 sig=0.06 seen=[18, 19] rc=(0,0,8,8)
+17:38:45.725 PLANT ALIGN ID18: x=+0.200m z=1.64m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=-0.116m (not gated) tof=102.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:38:46.372 PLANT ALIGN ID18: x=+0.162m z=1.66m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=-0.103m (not gated) tof=105.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:38:46.966 PLANT P_STOP pt=12/12 EKF=(-0.27,-0.24) th=-6 r=0.36 sig=0.06 seen=[18, 19] rc=(0,0,8,8)
+17:38:47.024 PLANT ALIGN ID18: x=+0.114m z=1.64m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=-0.078m (not gated) tof=106.0cm stable=0/12 hold=False rc=(0,15,8,0)
+17:38:47.665 PLANT ALIGN ID18: x=+0.084m z=1.63m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=-0.069m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:48.302 PLANT ALIGN ID18: x=+0.049m z=1.58m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=-0.045m (not gated) tof=109.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:48.492 PLANT P_STOP pt=12/12 EKF=(-0.22,-0.28) th=-8 r=0.35 sig=0.06 seen=[18, 19] rc=(0,15,0,0)
+17:38:48.922 PLANT ALIGN ID18: x=+0.034m z=1.50m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.06 y=-0.033m (not gated) tof=110.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:49.529 PLANT ALIGN ID18: x=+0.057m z=1.40m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.055m (not gated) tof=108.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:49.998 PLANT P_STOP pt=12/12 EKF=(+0.05,-0.27) th=-7 r=0.27 sig=0.05 seen=[18, 19] rc=(0,0,8,8)
+17:38:50.136 PLANT ALIGN ID18: x=+0.106m z=1.28m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.079m (not gated) tof=104.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:38:50.742 PLANT ALIGN ID18: x=+0.105m z=1.19m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.080m (not gated) tof=105.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:38:51.352 PLANT ALIGN ID18: x=+0.102m z=1.17m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.04 y=-0.063m (not gated) tof=106.0cm stable=0/12 hold=False rc=(0,0,8,8)
+17:38:51.534 PLANT P_STOP pt=12/12 EKF=(+0.20,-0.20) th=-11 r=0.29 sig=0.04 seen=[18, 19] rc=(0,0,8,8)
+17:38:51.953 PLANT ALIGN ID18: x=+0.075m z=1.18m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.04 y=-0.045m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:52.561 PLANT ALIGN ID18: x=+0.060m z=1.15m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.055m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,15,0,0)
+17:38:53.072 PLANT P_STOP pt=12/12 EKF=(+0.24,-0.23) th=-13 r=0.33 sig=0.05 seen=[18] rc=(0,15,8,0)
+17:38:53.169 PLANT ALIGN ID18: x=+0.054m z=1.10m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.058m (not gated) tof=106.0cm stable=0/12 hold=False rc=(0,15,8,0)
+17:38:53.773 PLANT ALIGN ID18: x=+0.057m z=1.01m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.046m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,14,0,0)
+17:38:54.381 PLANT ALIGN ID18: x=+0.078m z=0.90m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.029m (not gated) tof=108.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:38:54.612 PLANT P_STOP pt=12/12 EKF=(+0.49,-0.26) th=-12 r=0.55 sig=0.05 seen=[18] rc=(0,0,0,8)
+17:38:54.990 PLANT ALIGN ID18: x=+0.070m z=0.82m target=0.65m x_ok=False range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.022m (not gated) tof=109.0cm stable=0/12 hold=False rc=(0,0,0,8)
+17:38:55.600 PLANT ALIGN ID18: x=+0.057m z=0.80m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.033m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,8,0,0)
+17:38:56.163 PLANT P_STOP pt=12/12 EKF=(+0.56,-0.27) th=-15 r=0.62 sig=0.05 seen=[18] rc=(0,8,8,0)
+17:38:56.218 PLANT ALIGN ID18: x=+0.046m z=0.80m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.044m (not gated) tof=106.0cm stable=0/12 hold=False rc=(0,8,8,0)
+17:38:56.832 PLANT ALIGN ID18: x=+0.040m z=0.77m target=0.65m x_ok=True range_ok=False pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.035m (not gated) tof=107.0cm stable=0/12 hold=False rc=(0,8,0,0)
+17:38:57.434 PLANT ALIGN ID18: x=+0.038m z=0.73m target=0.65m x_ok=True range_ok=True pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.028m (not gated) tof=107.0cm stable=6/12 hold=False rc=(0,0,0,0)
+17:38:57.669 PLANT P_STOP pt=12/12 EKF=(+0.63,-0.29) th=-16 r=0.70 sig=0.05 seen=[18] rc=(0,0,0,0)
+17:38:57.714 PLANT stop 18: visually centred ID18 at z=0.71m x=+0.038m (visual_y=-0.026m diagnostic only), tof=107.0cm; hovering 1.0 s
+17:38:58.039 PLANT ALIGN ID18: x=+0.042m z=0.68m target=0.65m x_ok=True range_ok=True pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.026m (not gated) tof=107.0cm stable=12/12 hold=True rc=(0,0,0,0)
+17:38:58.649 PLANT ALIGN ID18: x=+0.056m z=0.66m target=0.65m x_ok=True range_ok=True pos_ok=False yaw_ok=True view_ok=True fix_ok=True sigma=0.05 y=-0.034m (not gated) tof=106.0cm stable=12/12 hold=True rc=(0,0,8,0)
+17:38:58.738 PLANT stop 18 (ID18) done: EKF=(+0.70,-0.30) th=-15 sigma=0.05
+17:38:58.739 PLANT ID18 done: sliding left to see ID19
+17:38:58.739 MISSION: -> P_SLIDE
+17:38:59.205 PLANT P_SLIDE pt=12/12 EKF=(+0.70,-0.30) th=-15 r=0.76 sig=0.05 seen=[18] rc=(-14,0,8,0)
+17:39:00.747 PLANT P_SLIDE pt=12/12 EKF=(+0.70,-0.18) th=-16 r=0.72 sig=0.06 seen=[18] rc=(-14,0,0,0)
+17:39:02.291 PLANT P_SLIDE pt=12/12 EKF=(+0.73,-0.01) th=-16 r=0.73 sig=0.04 seen=[19] rc=(-14,0,0,0)
+17:39:02.474 PLANT ID19 in view (x=-0.14m z=0.55m) after 3.7 s slide -> fine alignment
+17:39:02.474 MISSION: -> P_ALIGN19
+17:39:02.894 PLANT ALIGN ID19: x=-0.087m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:02.940 PLANT ALIGN ID19: x=-0.084m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:02.987 PLANT ALIGN ID19: x=-0.075m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:03.036 PLANT ALIGN ID19: x=-0.071m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:03.080 PLANT ALIGN ID19: x=-0.063m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:03.131 PLANT ALIGN ID19: x=-0.059m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:03.174 PLANT ALIGN ID19: x=-0.056m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:03.222 PLANT ALIGN ID19: x=-0.050m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:03.270 PLANT ALIGN ID19: x=-0.047m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:03.314 PLANT ALIGN ID19: x=-0.042m z=0.57m target=0.60m x_ok=False z_ok=True stable=0/10 rc=(-8,0,0,0)
+17:39:03.362 PLANT ALIGN ID19: x=-0.039m z=0.57m target=0.60m x_ok=True z_ok=True stable=1/10 rc=(0,0,0,0)
+17:39:03.412 PLANT ALIGN ID19: x=-0.034m z=0.58m target=0.60m x_ok=True z_ok=True stable=2/10 rc=(0,0,0,0)
+17:39:03.457 PLANT ALIGN ID19: x=-0.033m z=0.58m target=0.60m x_ok=True z_ok=True stable=3/10 rc=(0,0,0,0)
+17:39:03.504 PLANT ALIGN ID19: x=-0.031m z=0.58m target=0.60m x_ok=True z_ok=True stable=4/10 rc=(0,0,0,0)
+17:39:03.548 PLANT ALIGN ID19: x=-0.028m z=0.58m target=0.60m x_ok=True z_ok=True stable=5/10 rc=(0,0,0,0)
+17:39:03.596 PLANT ALIGN ID19: x=-0.026m z=0.58m target=0.60m x_ok=True z_ok=True stable=6/10 rc=(0,0,0,0)
+17:39:03.641 PLANT ALIGN ID19: x=-0.023m z=0.59m target=0.60m x_ok=True z_ok=True stable=7/10 rc=(0,0,0,0)
+17:39:03.689 PLANT ALIGN ID19: x=-0.021m z=0.59m target=0.60m x_ok=True z_ok=True stable=8/10 rc=(0,0,0,0)
+17:39:03.736 PLANT ALIGN ID19: x=-0.019m z=0.59m target=0.60m x_ok=True z_ok=True stable=9/10 rc=(0,0,0,0)
+17:39:03.779 PLANT ALIGN ID19: x=-0.016m z=0.60m target=0.60m x_ok=True z_ok=True stable=10/10 rc=(0,0,0,0)
+17:39:03.780 PLANT complete (aligned with ID19 (x=-0.016 m, z=0.60 m)) -> landing  [ID13=OK, ID9=OK, ID11=OK, ID16=OK, ID18=OK, ID19=OK]
+17:39:03.801 LANDING: plant test: aligned with ID19 (x=-0.016 m, z=0.60 m)
+17:39:04.102 LAND sent (attempt 1/3) alt0=110.0
+17:39:04.966 descent observed in telemetry
+17:39:07.146 land-phase response: 'ok'
+17:39:07.452 LANDED (telemetry: on ground). Verify physically.
+17:39:09.317 quit requested
+17:39:09.397 Final commander state: LANDED. Logs in logs

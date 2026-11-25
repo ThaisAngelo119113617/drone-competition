@@ -11271,7 +11271,8 @@ PLANT_START_DIST = 1.10         # m: where the drone is placed on the floor (dis
 PLANT_HOVER_S = 1.0             # s: hover at every marker stop (to be shortened later)
 BACK_UD_FF = 10                 # rc: constant down-bias during the vertical-slalom BACK pass (backward flight makes the Tello climb)
 FULL_MAX_S = 540.0              # s: whole mission (hoop -> slalom -> weave -> plant -> ID19); the plant leg alone is ~155 s. Watch the battery (min_battery_flight)
-PLANT_MAX_S = 90.0              # s: flight-time limit of the lap test, counted from take-off (--max-seconds overrides it)
+PLANT_MAX_S = 90.0  # s: flight-time limit of the lap test, counted from take-off (--max-seconds overrides it)
+PLANT_MAX_S_SEQ = 240.0         # V37: lap + ID18 + ID19 + the 19-23-19-39-19 sequence (~60 s more than the 180 s lap limit)
 PLANT_MAX_S_LAP = 180.0         # V29: the full lap took 144 s to reach ID13 in the 16:31 flight; 150 s would cut it
 PLANT_SLIDE19_RC = 14        # V35: lateral speed (left) after the ID18 stop
 PLANT_SLIDE19_X_TOL = 0.15   # m: ID19 counts as 'seen' when its camera x is within this
@@ -11341,6 +11342,22 @@ PLANT_Q_TH_DEG = 1.5            # deg/sqrt(s): heading process noise of the plan
 PLANT_IDS = (13, 9, 11, 16, 18, 19)
 WV_NAMES.update({9: 'plant left', 11: 'plant back', 16: 'plant right', 18: 'aux (right of 19)', 19: 'final'})
 
+# V37: final sequence after ID19: 19 -> 23 (left) -> 19 (right) -> 39 (up) -> 19 (down) -> land.
+# Camera only (visual servo): 23 and 39 are NOT in the EKF map, so the EKF never uses them.
+PLANT_SEQ_IDS = (23, 39)
+WV_NAMES.update({23: 'left of 19', 39: 'above 19'})
+PLANT_SEQ = [            # (marker, axis to search on while it is not in view, direction: +1 = right/up, -1 = left/down)
+    (23, 'lr', -1),      # slide LEFT from ID19 until ID23 is centred
+    (19, 'lr', +1),      # slide back RIGHT to ID19
+    (39, 'ud', +1),      # climb until ID39 (above ID19) is centred
+    (19, 'ud', -1),      # descend back to ID19, then land
+]
+PLANT_SEQ_SLIDE_RC = 14      # rc sideways while the target marker is not in view (same as PLANT_SLIDE19_RC)
+PLANT_SEQ_UD_RC = 18         # rc up/down while the target marker is not in view
+PLANT_SEQ_MIN_UD_RC = 15     # smallest up/down rc that really moves the Tello (8 did not climb)
+PLANT_SEQ_Y_TOL = 0.05       # m: vertical centring tolerance on 39 / 19 in the up/down steps
+PLANT_SEQ_MAX_S = 25.0       # s per step: land if the step is not done in this time
+PLANT_SEQ_MAX_CM = 240       # cm ToF: never climb above this while looking for ID39 (abort limit is max_height = 280)
 
 def plant_marker_map():
     """Marker centres (x, y) in the WvEKF frame."""
@@ -12663,7 +12680,7 @@ class App:
         """The drone was placed PLANT_START_DIST from the plant centre, nose towards ID13. Own WvEKF with the plant map (frame: see PLANT_C)."""
         cfg = self.cfg
         cfg.slalom, cfg.guide_id, cfg.circle = True, None, False
-        cfg.slalom_ids = tuple(sorted(set(cfg.slalom_ids) | set(PLANT_IDS))) if chained else tuple(PLANT_IDS)
+        cfg.slalom_ids = tuple(sorted(set(cfg.slalom_ids) | set(PLANT_IDS) | set(PLANT_SEQ_IDS))) if chained else tuple(PLANT_IDS) + PLANT_SEQ_IDS   # V37: also detect 23 / 39
         self._wv_ids, self._wv_map = set(PLANT_IDS), plant_marker_map()
         cx, cy = PLANT_C
         sx, sy, th0 = cx - PLANT_START_DIST, cy, 0.0
@@ -12696,6 +12713,7 @@ class App:
         self._pl_corner_t = None
         self._pl_corner_bad = 0
         self._pl_vis18 = False   # V33: ID18 leg flown by the camera only (no EKF waypoint, no EKF guards)
+                self._pl_seq_i, self._pl_seq_seen = 0, set()   # V37: step in PLANT_SEQ / markers centred in the sequence
         self._pl_target_last = {}  # id -> (time, horizontal camera offset)
         self._pl_track_log_t = 0.0
         self.ev(f'PLANT start{" (chained after the weave)" if chained else ""}: EKF at ({sx - cx:+.2f},{sy - cy:+.2f}) from the centre, nose +X; stop_R={PLANT_R:.2f}m corner_xy=±{PLANT_CORNER_D:.2f}m, hover {PLANT_HOVER_S:.1f} s, '
@@ -12717,7 +12735,7 @@ class App:
         th = math.radians(self.cfg.cam_pitch_deg)
         out = {}
         for i, o in obs.items():
-            if i in PLANT_IDS and self._pl_view_ok(o, i, align=True):
+            if (i in PLANT_IDS or i in PLANT_SEQ_IDS) and self._pl_view_ok(o, i, align=True):
                 x, y, z = (float(v) for v in o['xyz'])
                 out[i] = (x, z * math.sin(th) + y * math.cos(th), z * math.cos(th) - y * math.sin(th))
         return out
@@ -12764,6 +12782,7 @@ class App:
     def _pl_finish(self, now, why):
         self._pl_end = True
         seen = ', '.join(f'ID{m}={"OK" if m in self._wv_seen else "NOT SEEN"}' for m in PLANT_IDS)
+        seen += ''.join(f', ID{m}={"OK" if m in getattr(self, "_pl_seq_seen", ()) else "NOT SEEN"}' for m in PLANT_SEQ_IDS)
         self.ev(f'PLANT complete ({why}) -> landing  [{seen}]')
         self.cmd.request_land(f'plant test: {why}')
         return ZERO
@@ -13098,11 +13117,58 @@ class App:
                 if now - self._pl_log_t > 0.6:
                     self.ev(f'PLANT ALIGN ID19: x={ex:+.3f}m z={z:.2f}m target={PLANT_ID19_DIST:.2f}m x_ok={x_ok} z_ok={z_ok} stable={self._wv_stable}/{PLANT_ID19_STABLE} rc=({lr},{fb},{ud},0)')
                 if self._wv_stable >= PLANT_ID19_STABLE:
-                    return self._pl_finish(now, f'aligned with ID19 (x={ex:+.3f} m, z={z:.2f} m)')
+                    # V37: do not land yet -> final sequence 19 -> 23 -> 19 -> 39 -> 19 -> land
+                    self.ev(f'PLANT ID19 aligned (x={ex:+.3f} m, z={z:.2f} m) -> final sequence 19 -> 23 -> 19 -> 39 -> 19')
+                    self._pl_seq_i, self._pl_seq_seen = 0, {19}
+                    self._wv_goto('P_SEQ', now)
+                    return ZERO
             elif now - self._pl_19_lost > PLANT_ID19_LOST_S:
                 return self._pl_finish(now, 'ID19 lost during the final alignment')
             if t_a > PLANT_ID19_MAX_S:
                 return self._pl_finish(now, f'ID19 final alignment timeout {t_a:.0f} s')
+        
+        elif ph == 'P_SEQ':
+            # V37: camera-only steps of PLANT_SEQ. Target in view -> P control (centre x, hold PLANT_ID19_DIST, and centre y on the
+            # up/down steps). Target not in view -> move with a fixed rc in the step's direction until it appears.
+            mid, axis, sgn = PLANT_SEQ[self._pl_seq_i]
+            vert = axis == 'ud'
+            t_q = now - self._phase_t
+            if not vert:
+                ud = self._pl_ud(lvl, tof)                       # sideways steps: hold the ToF height as before
+            if mid in lvl:
+                ex, ey, z = lvl[mid]                             # level frame: x right, y DOWN, z forward (m)
+                x_ok = abs(ex) <= PLANT_ID19_X_TOL
+                z_ok = abs(z - PLANT_ID19_DIST) <= PLANT_ID19_Z_TOL
+                y_ok = (not vert) or abs(ey) <= PLANT_SEQ_Y_TOL
+                # P controller: rc = K_P * error * 100 (with a minimum rc), capped at PLANT_ID19_MAX_RC
+                lr = 0 if x_ok else int(max(-PLANT_ID19_MAX_RC, min(PLANT_ID19_MAX_RC, _wv_pcmd(ex))))
+                fb = 0 if z_ok else int(max(-PLANT_ID19_MAX_RC, min(PLANT_ID19_MAX_RC, _wv_pcmd(z - PLANT_ID19_DIST))))
+                if vert:                                         # marker above (y < 0) -> go up
+                    ud = 0 if y_ok else int(max(-PLANT_SEQ_UD_RC, min(PLANT_SEQ_UD_RC, _wv_pcmd(-ey, min_rc=PLANT_SEQ_MIN_UD_RC))))
+                self._wv_stable = self._wv_stable + 1 if (x_ok and z_ok and y_ok) else 0
+                if now - self._pl_log_t > 0.6:
+                    self.ev(f'PLANT SEQ {self._pl_seq_i + 1}/{len(PLANT_SEQ)} ID{mid}: x={ex:+.3f} y={ey:+.3f} z={z:.2f}m '
+                            f'x_ok={x_ok} y_ok={y_ok} z_ok={z_ok} stable={self._wv_stable}/{PLANT_ID19_STABLE} rc=({lr},{fb},{ud},0)')
+                if self._wv_stable >= PLANT_ID19_STABLE:
+                    self._pl_seq_seen.add(mid)
+                    self.ev(f'PLANT SEQ step {self._pl_seq_i + 1}/{len(PLANT_SEQ)} done: centred on ID{mid} after {t_q:.1f} s')
+                    self._pl_seq_i += 1
+                    if self._pl_seq_i >= len(PLANT_SEQ):
+                        return self._pl_finish(now, 'final sequence 19 -> 23 -> 19 -> 39 -> 19 done')
+                    self._wv_goto('P_SEQ', now)
+                    return ZERO
+            else:
+                self._wv_stable = 0                              # search: move towards where the marker should be
+                if vert:
+                    ud = sgn * PLANT_SEQ_UD_RC
+                else:
+                    lr = sgn * PLANT_SEQ_SLIDE_RC
+            if vert and tof is not None and tof >= PLANT_SEQ_MAX_CM:
+                ud = min(ud, 0)                                  # height cap while looking for ID39
+                if mid not in lvl:
+                    return self._pl_finish(now, f'ID{mid} not found below tof {PLANT_SEQ_MAX_CM} cm')
+            if t_q > PLANT_SEQ_MAX_S:
+                return self._pl_finish(now, f'step to ID{mid} timeout {t_q:.0f} s')
         else:
             return self._abort(f'unknown plant phase {ph}')
         # EKF confidence guard (as in the weave): too unsure -> stop translating, then land
@@ -13835,8 +13901,7 @@ def main():
     ap.add_argument('--ekf-vg-gain', type=float, default=1.2)
     args = ap.parse_args()
     if args.max_seconds is None:
-        args.max_seconds = (PLANT_MAX_S_LAP if args.plant_stop_after in ('lap', '18') else PLANT_MAX_S_FINAL if args.plant_stop_after in ('19', '16') else PLANT_MAX_S) if args.start_at == 'plant' else (420.0 if args.no_plant or args.stop_after else FULL_MAX_S)   # V19: 16 needs ~66-81 s to ID11 + the 11->16 leg
-    if args.max_seconds > (180 if args.plant_stop_after in ('lap', '18') else 150 if args.plant_stop_after == '16' else 90) and args.start_at == 'plant':
+        args.max_seconds = (_after in ('lap', '18') else PLANT_MAX_S_FINAL if args.plant_stop_after in ('19', '16') else PLANT_MAX_S) if args.start_at == 'plant' else (PLANT_MAX_S_LAP if args.plant_stop_after == 'lap' else PLANT_MAX_S_SEQ if args.plant_stop_after == '18' else)
         ap.error('--start-at plant: max-seconds cannot exceed 90 (150 with --plant-stop-after 16, 180 with lap/18)')
     if not 5 <= args.max_seconds <= 600:
         ap.error('--max-seconds must be 5..600')
@@ -13871,7 +13936,7 @@ def main():
     cfg.plant_stop_after = args.plant_stop_after
     cfg.record = args.record
     if cfg.start_plant:
-        cfg.slalom_ids = tuple(PLANT_IDS)          # detect only the plant markers (the floor mat uses the same dictionary)
+        cfg.slalom_ids = tuple(PLANT_IDS) + PLANT_SEQ_IDS   # V37: + 23 / 39. detect only the plant markers
         cfg.target_height = PLANT_TAKEOFF_CM       # take off and climb to the plant marker height (--target-height-cm is ignored here)
         cfg.ekf_shadow = cfg.ekf_control = False   # the global EKF + YAML belong to the hoop/slalom; the plant uses its own WvEKF + the PLANT_* map
         cfg.weave = False

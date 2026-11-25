@@ -1,0 +1,8 @@
+17:08:43.643 Battery: 92%
+17:08:45.677 EKF shadow OFF (import failed: No module named 'ekf_tello'). Mission unaffected.
+17:08:45.681 T2.1 SLALOM part 1 ready. T,Y = start | SPACE = pause (rc zero, hover) | P/L = land | E/K = EMERGENCY (falls) | Q = quit
+17:08:54.982 PAUSED: rc zero, hovering (SPACE again to resume)
+17:08:56.207 centre source: NO_MARKERS -> MULTI
+17:08:56.255 centre source: MULTI -> ID10_ONLY
+17:10:56.554 Ctrl+C: landing
+17:10:56.602 Final commander state: GROUNDED. Logs in logs

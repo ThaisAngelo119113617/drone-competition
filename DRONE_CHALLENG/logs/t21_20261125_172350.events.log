@@ -1,0 +1,79 @@
+17:23:50.516 Battery: 63%
+17:23:52.394 EKF shadow OFF (import failed: No module named 'ekf_tello'). Mission unaffected.
+17:23:52.401 T2.1 SLALOM part 1 ready. T,Y = start | SPACE = pause (rc zero, hover) | P/L = land | E/K = EMERGENCY (falls) | Q = quit
+17:23:53.763 CONFIRM TAKEOFF: press Y within 3 s (N cancels). Area clear? Observer ready?
+17:23:54.675 takeoff confirmed
+17:23:54.705 TAKEOFF sent (single attempt, never retried)
+17:23:57.756 takeoff VERIFIED by telemetry: settled at alt=77cm (ack=None)
+17:23:57.759 FLYING: starting supervised height acquisition
+17:23:59.738 centre source: NO_MARKERS -> ID0_ONLY
+17:24:00.376 centre source: ID0_ONLY -> GUIDE
+17:24:02.410 guide vs pair centre: dx=-2.4 dy=-30.9 dz=+127.8 cm
+17:24:02.414 centre source: GUIDE -> MULTI
+17:24:03.651 HEIGHT REACHED (tof=134cm). Press G to align.
+17:24:03.653 MISSION: -> ALIGN
+17:24:03.707 AUTO ALIGN ON - lateral/vertical only
+17:24:04.456 guide vs pair centre: dx=-3.6 dy=-30.4 dz=+125.4 cm
+17:24:06.458 guide vs pair centre: dx=-3.8 dy=-30.6 dz=+125.2 cm
+17:24:08.492 guide vs pair centre: dx=-3.6 dy=-29.5 dz=+126.2 cm
+17:24:08.653 centre source: MULTI -> GUIDE
+17:24:08.716 centre source: GUIDE -> MULTI
+17:24:10.508 guide vs pair centre: dx=-3.3 dy=-29.6 dz=+129.9 cm
+17:24:11.080 ALIGNED within 5 cm for 1 s (x=-0.005 y=-0.015)
+17:24:12.238 MISSION: automatic CROSS, forward 141 cm
+17:24:12.264 CROSSING: forward 141 (single attempt)
+17:24:12.306 MISSION: -> CROSS
+17:24:12.538 guide vs pair centre: dx=-4.1 dy=-29.8 dz=+122.9 cm
+17:24:12.566 stale/unexpected response drained before forward: 'ok'
+17:24:13.675 centre source: MULTI -> GUIDE
+17:24:15.613 forward response: 'ok'
+17:24:15.613 forward 141 done (ok): hovering, mission continues
+17:24:16.261 FLYING: starting supervised height acquisition
+17:24:16.283 MISSION: -> APPROACH
+17:24:16.288 MISSION: CROSS done -> APPROACH ID3
+17:24:18.348 HEIGHT REACHED (tof=124cm). Press G to align.
+17:24:18.407 MISSION: -> DONE
+17:24:18.410 MISSION: ID3 at 0.85 m reached -> hover
+17:24:19.409 HANDOFF hoop -> slalom (EKF not confident), ID3 f=0.74 m
+17:24:19.411 MISSION: -> ALIGN3
+17:24:28.383 MISSION: -> UP
+17:24:42.250 MISSION: at 2.11 m, ID17 2.26 m ahead, frame-to-pole gap 1.32 m (learned); stop target ID17 at 0.87 m
+17:24:42.252 MISSION: -> OVER
+17:24:51.566 MISSION: ID17 at 0.91 m -> over the bar, stop
+17:24:51.570 MISSION: -> DESCEND
+17:25:08.818 MISSION: gap height reached (H=1.55 m)
+17:25:08.822 MISSION: -> BACK
+17:25:09.843 WATCHDOG: setpoint stale -> rc zero
+17:25:10.029 WATCHDOG: GUI stalled 0.6s -> rc zero
+17:25:10.156 WATCHDOG: GUI stalled 0.7s -> rc zero
+17:25:10.278 WATCHDOG: GUI stalled 0.8s -> rc zero
+17:25:10.339 WATCHDOG: GUI stalled 0.9s -> rc zero
+17:25:10.463 WATCHDOG: GUI stalled 1.0s -> rc zero
+17:25:10.526 WATCHDOG: GUI stalled 1.1s -> rc zero
+17:25:10.653 WATCHDOG: GUI stalled 1.2s -> rc zero
+17:25:10.778 WATCHDOG: GUI stalled 1.3s -> rc zero
+17:25:10.841 WATCHDOG: GUI stalled 1.4s -> rc zero
+17:25:30.160 MISSION: back pass done, seen ID3, frame 0.49 m ahead (H=1.46 m)
+17:25:30.161 MISSION: -> FIND3
+17:25:30.210 MISSION: ID3 re-acquired: 0.49 m ahead, x=+0.09 m, height from marker 1.52 m (tof 155)
+17:25:30.213 MISSION: -> DOWN2
+17:25:34.089 MISSION: aligned with ID3 before the descent (x=+0.03 m, yaw err=+2.1 deg)
+17:25:41.273 MISSION: low gap height reached (H=0.97 m, frame 0.93 m ahead, x=+0.04 m)
+17:25:41.275 MISSION: -> CROSS2
+17:25:57.519 MISSION: 0.50 m beyond the frame (ID8 0.80 m ahead, frame-to-ID8 gap 1.30 m)
+17:25:57.520 MISSION: -> APPR8
+17:26:01.554 MISSION: ID8 at 0.75 m, x=+0.02 m -> hover
+17:26:01.556 MISSION: -> END
+17:26:01.899 WEAVE start (chained after the slalom): local x=+0.05 y=+0.00 (world +1.88, +0.13); 6 waypoints then the plant ID13
+17:26:01.902 MISSION: -> W_CLIMB
+17:26:01.962 WEAVE SEEN ID8 (purple bottom) at 0.76 m, t=0.1 s, phase=W_CLIMB
+17:26:11.116 WEAVE SEEN ID5 (purple top) at 0.67 m, t=9.2 s, phase=W_CLIMB
+17:26:14.303 MISSION: weave: h=190 and no ID5 -> landing
+17:26:14.359 MISSION: weave: h=190 and no ID5 -> landing
+17:26:14.360 LANDING: weave: h=190 and no ID5
+17:26:14.666 LAND sent (attempt 1/3) alt0=190.0
+17:26:16.043 descent observed in telemetry
+17:26:19.552 LANDED (telemetry: on ground). Verify physically.
+17:26:38.709 WEAVE SEEN ID13 (plant) at 3.55 m, t=36.8 s, phase=W_CLIMB
+17:27:37.761 quit requested
+17:27:37.871 Final commander state: LANDED. Logs in logs

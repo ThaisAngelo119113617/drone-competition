@@ -1,0 +1,63 @@
+17:11:25.624 Battery: 88%
+17:11:27.548 EKF shadow OFF (import failed: No module named 'ekf_tello'). Mission unaffected.
+17:11:27.550 T2.1 SLALOM part 1 ready. T,Y = start | SPACE = pause (rc zero, hover) | P/L = land | E/K = EMERGENCY (falls) | Q = quit
+17:11:57.185 CONFIRM TAKEOFF: press Y within 3 s (N cancels). Area clear? Observer ready?
+17:11:57.652 takeoff confirmed
+17:11:57.677 TAKEOFF sent (single attempt, never retried)
+17:11:59.743 centre source: NO_MARKERS -> ID0_ONLY
+17:11:59.923 centre source: ID0_ONLY -> GUIDE
+17:12:01.033 takeoff VERIFIED by telemetry: settled at alt=96cm (ack=None)
+17:12:01.043 centre source: GUIDE -> ID0_ONLY
+17:12:01.085 FLYING: starting supervised height acquisition
+17:12:05.379 centre source: ID0_ONLY -> GUIDE
+17:12:06.900 guide vs pair centre: dx=+5.2 dy=-32.0 dz=+126.8 cm
+17:12:06.901 centre source: GUIDE -> MULTI
+17:12:07.089 centre source: MULTI -> GUIDE
+17:12:07.196 centre source: GUIDE -> MULTI
+17:12:08.168 HEIGHT REACHED (tof=125cm). Press G to align.
+17:12:08.168 MISSION: -> ALIGN
+17:12:08.236 AUTO ALIGN ON - lateral/vertical only
+17:12:08.948 guide vs pair centre: dx=+4.0 dy=-30.9 dz=+127.9 cm
+17:12:10.945 guide vs pair centre: dx=+4.0 dy=-30.9 dz=+128.2 cm
+17:12:12.970 guide vs pair centre: dx=+4.1 dy=-31.0 dz=+130.0 cm
+17:12:15.013 guide vs pair centre: dx=+4.1 dy=-31.5 dz=+127.1 cm
+17:12:17.035 guide vs pair centre: dx=+4.0 dy=-30.5 dz=+122.3 cm
+17:12:19.081 guide vs pair centre: dx=+3.9 dy=-30.7 dz=+129.5 cm
+17:12:20.012 ALIGNED within 5 cm for 1 s (x=+0.014 y=-0.035)
+17:12:20.992 MISSION: automatic CROSS, forward 129 cm
+17:12:21.006 CROSSING: forward 129 (single attempt)
+17:12:21.049 MISSION: -> CROSS
+17:12:21.099 guide vs pair centre: dx=+3.3 dy=-30.9 dz=+128.1 cm
+17:12:21.308 stale/unexpected response drained before forward: 'ok'
+17:12:22.250 centre source: MULTI -> GUIDE
+17:12:24.063 forward response: 'ok'
+17:12:24.064 forward 129 done (ok): hovering, mission continues
+17:12:24.697 FLYING: starting supervised height acquisition
+17:12:24.719 MISSION: -> APPROACH
+17:12:24.721 MISSION: CROSS done -> APPROACH ID3
+17:12:27.196 MISSION: -> DONE
+17:12:27.197 MISSION: ID3 at 0.73 m reached -> hover
+17:12:27.897 HEIGHT REACHED (tof=124cm). Press G to align.
+17:12:28.245 HANDOFF hoop -> slalom (EKF not confident), ID3 f=0.74 m
+17:12:28.246 MISSION: -> ALIGN3
+17:12:31.201 MISSION: -> UP
+17:12:53.691 MISSION: at 2.09 m, ID17 2.04 m ahead, frame-to-pole gap 1.32 m (learned); stop target ID17 at 0.87 m
+17:12:53.693 MISSION: -> OVER
+17:12:58.297 WATCHDOG: setpoint stale -> rc zero
+17:12:58.486 WATCHDOG: GUI stalled 0.6s -> rc zero
+17:12:58.612 WATCHDOG: GUI stalled 0.7s -> rc zero
+17:12:58.737 WATCHDOG: GUI stalled 0.8s -> rc zero
+17:12:58.797 WATCHDOG: GUI stalled 0.9s -> rc zero
+17:12:58.923 WATCHDOG: GUI stalled 1.0s -> rc zero
+17:12:58.984 WATCHDOG: GUI stalled 1.1s -> rc zero
+17:12:59.108 WATCHDOG: GUI stalled 1.2s -> rc zero
+17:12:59.232 WATCHDOG: GUI stalled 1.3s -> rc zero
+17:12:59.296 WATCHDOG: GUI stalled 1.4s -> rc zero
+17:13:13.744 MISSION: phase OVER timeout -> landing
+17:13:13.785 LANDING: phase OVER timeout
+17:13:14.096 LAND sent (attempt 1/3) alt0=233.0
+17:13:15.112 descent observed in telemetry
+17:13:18.355 land-phase response: 'ok'
+17:13:18.711 LANDED (telemetry: on ground). Verify physically.
+17:13:26.388 quit requested
+17:13:26.506 Final commander state: LANDED. Logs in logs

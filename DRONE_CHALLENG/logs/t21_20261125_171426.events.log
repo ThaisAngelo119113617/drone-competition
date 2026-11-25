@@ -1,0 +1,54 @@
+17:14:26.317 Battery: 63%
+17:14:28.207 EKF shadow OFF (import failed: No module named 'ekf_tello'). Mission unaffected.
+17:14:28.216 T2.1 SLALOM part 1 ready. T,Y = start | SPACE = pause (rc zero, hover) | P/L = land | E/K = EMERGENCY (falls) | Q = quit
+17:14:36.719 CONFIRM TAKEOFF: press Y within 3 s (N cancels). Area clear? Observer ready?
+17:14:36.996 Y ignored (no pending confirmation)
+17:14:39.682 CONFIRM TAKEOFF: press Y within 3 s (N cancels). Area clear? Observer ready?
+17:14:40.142 takeoff confirmed
+17:14:40.148 TAKEOFF sent (single attempt, never retried)
+17:14:43.022 centre source: NO_MARKERS -> ID0_ONLY
+17:14:43.403 takeoff VERIFIED by telemetry: settled at alt=90cm (ack=None)
+17:14:43.427 FLYING: starting supervised height acquisition
+17:14:44.842 centre source: ID0_ONLY -> GUIDE
+17:14:47.071 guide vs pair centre: dx=-3.5 dy=-30.7 dz=+128.7 cm
+17:14:47.076 centre source: GUIDE -> MULTI
+17:14:48.448 HEIGHT REACHED (tof=127cm). Press G to align.
+17:14:48.450 MISSION: -> ALIGN
+17:14:48.500 AUTO ALIGN ON - lateral/vertical only
+17:14:49.080 guide vs pair centre: dx=-4.5 dy=-28.3 dz=+127.1 cm
+17:14:51.134 guide vs pair centre: dx=-4.8 dy=-29.3 dz=+123.4 cm
+17:14:53.187 guide vs pair centre: dx=-5.0 dy=-29.3 dz=+122.0 cm
+17:14:55.195 guide vs pair centre: dx=-4.9 dy=-29.2 dz=+123.3 cm
+17:14:55.446 ALIGNED within 5 cm for 1 s (x=+0.005 y=-0.047)
+17:14:56.446 MISSION: automatic CROSS, forward 153 cm
+17:14:56.466 CROSSING: forward 153 (single attempt)
+17:14:56.502 MISSION: -> CROSS
+17:14:56.767 stale/unexpected response drained before forward: 'ok'
+17:14:57.207 guide vs pair centre: dx=-4.7 dy=-33.1 dz=+121.7 cm
+17:14:57.997 centre source: MULTI -> GUIDE
+17:14:59.863 forward response: 'ok'
+17:14:59.864 forward 153 done (ok): hovering, mission continues
+17:15:00.485 FLYING: starting supervised height acquisition
+17:15:00.508 MISSION: -> APPROACH
+17:15:00.511 MISSION: CROSS done -> APPROACH ID3
+17:15:00.564 MISSION: -> DONE
+17:15:00.567 MISSION: ID3 at 0.84 m reached -> hover
+17:15:01.576 HANDOFF hoop -> slalom (EKF not confident), ID3 not in view
+17:15:01.581 MISSION: -> ALIGN3
+17:15:02.815 HEIGHT REACHED (tof=128cm). Press G to align.
+17:15:04.344 MISSION: -> UP
+17:15:16.037 MISSION: at 2.11 m, ID17 2.23 m ahead, frame-to-pole gap 1.31 m (learned); stop target ID17 at 0.86 m
+17:15:16.040 MISSION: -> OVER
+17:15:24.420 OVER: ID17 lost and tof 226 cm > 225 -> descending gently (ud -20) until ID17 is back
+17:15:27.389 MISSION: ID17 at 0.89 m -> over the bar, stop
+17:15:27.390 MISSION: -> DESCEND
+17:15:42.952 MISSION: gap height reached (H=1.52 m)
+17:15:42.966 MISSION: -> BACK
+17:15:54.945 MISSION: ID5/ID17 (back pass) lost for 6 s -> landing
+17:15:54.988 MISSION: ID5/ID17 (back pass) lost for 6 s -> landing
+17:15:55.007 LANDING: ID5/ID17 (back pass) lost for 6 s
+17:15:55.308 LAND sent (attempt 1/3) alt0=133.0
+17:15:56.272 descent observed in telemetry
+17:15:59.020 LANDED (telemetry: on ground). Verify physically.
+17:16:02.546 quit requested
+17:16:02.612 Final commander state: LANDED. Logs in logs
